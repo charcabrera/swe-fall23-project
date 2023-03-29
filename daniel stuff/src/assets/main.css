@@ -1,0 +1,43 @@
+/* base.css gives us all the funny colors.*/
+@import './base.css';
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  font-weight: normal;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+a, /* used for hyperlink text */
+.green { /* idk why this color isn't in base.css. I guess to prove a point or something. */
+  text-decoration: none;
+  color: lightgreen;
+  /* color: hsla(160, 100%, 37%, 1);*/
+  transition: 0.4s;
+}
+
+/* This is the highlight color of text when hovered over by the mouse.*/
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(0, 0%, 100%, 0.608);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+  }
+
+  #app {
+
+  }
+}
