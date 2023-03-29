@@ -1,0 +1,13 @@
+sprites to make:
+
+- atom
+- molecule
+- molecular cloud
+- protoplanetary disc
+- planet
+- star
+- solar system
+- galaxy
+- black hole
+
+currently there should be a bunch of placeholder art
