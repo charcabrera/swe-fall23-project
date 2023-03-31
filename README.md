@@ -23,3 +23,4 @@ Vue was making me feel like an idiot so I just made it in pure JS and HTML, I ju
 * Right now the Interval is set to tick every 1000ms (1 second), but I think we can change the tick rate and make the PPS proportional to the tick rate so we get the same overall PPS but see updates at shorter intervals
 * Upgrade effectiveness and price scaling here were just kinda random values I came up with, so we can look into the best way to go about that sometime soon
 * Names of literally everything subject to change as well
+* Adding more particles also will not be that hard
