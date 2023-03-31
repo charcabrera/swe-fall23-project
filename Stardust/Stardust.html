@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="proton-count"></div>
+        <div id="electron-count"></div>
+        <div id="neutron-count"></div>
+        <br>
+        <div id="pps"></div>
+        <br>
+        <button onclick="clicked()">Grab some Stardust</button>
+        <br><br>
+        <div>
+            You gained:
+            <div id="gained-protons"></div>
+            <div id="gained-electrons"></div>
+            <div id="gained-neutrons"></div>
+        </div>
+        <br><br>
+        <div>
+            Clicker Upgrades:
+            <div><button onclick="protonUpgrade()">Proton upgrade</button><span id="proton-cost"> Cost: 10 protons</span></div><br>
+            <div><button onclick="electronUpgrade()">Electron upgrade</button><span id="electron-cost"> Cost: 10 electrons</span></div><br>
+            <div><button onclick="neutronUpgrade()">Neutron Upgrade</button><span id="neutron-cost"> Cost: 10 neutrons</span></div><br>
+            <div><button onclick="grabPowerUpgrade()">Grab Power Upgrade</button><span id="grab-cost"> Cost: 100 of each particle</span></div><br>
+        </div>
+        <div>
+            Idle Upgrades:
+            <div><button onclick="weakGravityUpgrade()">Weak Gravity Upgrade</button><span id="wg-cost"> Cost: 20 of each particle</span></div><br>
+            <div><button onclick="strongGravityUpgrade()">Strong Gravity Upgrade</button><span id="sg-cost"> Cost: 150 of each particle</span></div>
+        </div>
+        <br>
+        
+    </body>
+    <script src="./Stardust.js"></script>
+</html>
