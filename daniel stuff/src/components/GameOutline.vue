@@ -4,24 +4,14 @@
 </script>
 
 <template>
-  <img alt="Vue logo" class="logo" src="../assets/UNIVERSE_TITLE_TEXT.png" />
-  <h1>
-    LOGIN!
-  </h1>
 
-  <form action="/action_page.php">
-    <label for="usrname"></label>
-    <input type="text" id="usrname" name="usrname" placeholder="Username" required>
-    <br>
-    <label for="psw"></label>
-    <input type="password" id="psw" name="psw" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
-    <br>
-    <input type="submit" value="Log In">
-   </form>
+  <h1>
+    LOGIN
+  </h1>
 
 
   <h2>
-    First time playing? Sign up <a href="https://youtu.be/sUYgwiAAN-4?t=4" target="_blank" rel="noopener">here</a>!
+    Congrats. You've reached the game.
   </h2>
   <br><br><br><br><br><br><br>
   <footer>
