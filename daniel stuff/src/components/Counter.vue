@@ -46,33 +46,34 @@
   </script>
   
   
-  <style scoped>
+<style scoped>
 
-  h1 {
-    text-align: center;
-  }
+h1 {
+  text-align: center;
+}
 
-  name {
-    display: block;
+name {
+  display: block;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  }
+  color: white;
+}
 
-  img {
-    justify-content: center;
-    display: block;
-  margin-left: auto;
-  margin-right: auto;
-  }
+img {
+  justify-content: center;
+  display: block;
+margin-left: auto;
+margin-right: auto;
+}
 
-  button {
-    background-color: var(--button);
-    font-family:'Courier New', Courier, monospace;
-    background-image: url('daniel stuff\src\assets\sprites\atom.png');
-  }
+button {
+  background-color: var(--button);
+  font-family:'Courier New', Courier, monospace;
+  background-image: url('daniel stuff\src\assets\sprites\atom.png');
+}
 
-  .button-with-image {
+.button-with-image {
   background-image: url('daniel stuff\src\assets\sprites\atom.png');
   background-size: cover;
   color: white;
@@ -80,9 +81,9 @@
   padding: 5px 10px;
   border: none;
   border-radius: 5px;
-  } 
+} 
 
-  .counter-container {
+.counter-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -99,5 +100,5 @@
   height: 50px;
   transform: scale(0.9);
 }
-  </style>
+</style>
   

@@ -61,6 +61,7 @@ name {
     margin-right: auto;
     text-align: center;
     font-size: large;
+    color: white;
 }
 
 cost {
