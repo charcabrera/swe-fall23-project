@@ -1,7 +1,6 @@
 <!-- This is a new file for our actual project lmao -->
 <script setup lang="ts">
-import CounterBox from '../components/CounterBox.vue'
-import StoreBox from '../components/StoreBox.vue'
+
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <!-- This is a new file for our actual project lmao -->
 <script setup lang="ts">
-import StoreItem from '../components/StoreItem.vue'
+import StoreItem from './StoreItem.vue'
 
 var size = 50;
 </script>
@@ -9,7 +9,7 @@ var size = 50;
     <div class="container">
     <StoreItem>
         <template #sprite>
-            <img src="../assets/sprites/atom.png" alt="Atom" width=50 height=50 class="sprite">
+            <img src="../../assets/sprites/atom.png" alt="Atom" width=50 height=50 class="sprite">
         </template>
         <template #n>
             Atom
@@ -20,7 +20,7 @@ var size = 50;
     </StoreItem>
     <StoreItem>
         <template #sprite>
-            <img src="../assets/sprites/molecule.png" alt="Molecule" width=50 height=50 class="sprite">
+            <img src="../../assets/sprites/molecule.png" alt="Molecule" width=50 height=50 class="sprite">
         </template>
         <template #n>
             Molecule
@@ -31,7 +31,7 @@ var size = 50;
     </StoreItem>
     <StoreItem>
         <template #sprite>
-            <img src="../assets/sprites/molecloud.png" alt="Molecular Cloud" width=50 height=50 class="sprite">
+            <img src="../../assets/sprites/molecloud.png" alt="Molecular Cloud" width=50 height=50 class="sprite">
         </template>
         <template #n>
             Molecular Cloud
@@ -42,7 +42,7 @@ var size = 50;
     </StoreItem>
     <StoreItem>
         <template #sprite>
-            <img src="../assets/sprites/star.png" alt="Star" width=50 height=50 class="sprite">
+            <img src="../../assets/sprites/star.png" alt="Star" width=50 height=50 class="sprite">
         </template>
         <template #n>
             Star
@@ -53,7 +53,7 @@ var size = 50;
     </StoreItem>
     <StoreItem>
         <template #sprite>
-            <img src="../assets/sprites/protodisk.png" alt="Protoplanetary Disk" width=50 height=50 class="sprite">
+            <img src="../../assets/sprites/protodisk.png" alt="Protoplanetary Disk" width=50 height=50 class="sprite">
         </template>
         <template #n>
             Protoplanetary Disk
@@ -64,18 +64,18 @@ var size = 50;
     </StoreItem>
     <StoreItem>
         <template #sprite>
-            <img src="../assets/sprites/planet.png" alt="Planet" width=50 height=50 class="sprite">
+            <img src="../../assets/sprites/planet.png" alt="Planet" width=50 height=50 class="sprite">
         </template>
         <template #n>
             Planet
         </template>
         <template #cost>
-            1 Protoplanetary Disk, 5 Molecular Clouds
+            1 PPD, 5 Molecular Clouds
         </template>
     </StoreItem>
     <StoreItem>
         <template #sprite>
-            <img src="../assets/sprites/solarsystem.png" alt="Solar System" width=50 height=50 class="sprite">
+            <img src="../../assets/sprites/solarsystem.png" alt="Solar System" width=50 height=50 class="sprite">
         </template>
         <template #n>
             Solar System
@@ -86,7 +86,7 @@ var size = 50;
     </StoreItem>
     <StoreItem>
         <template #sprite>
-            <img src="../assets/sprites/blackhole.png" alt="Black Hole" width=50 height=50 class="sprite">
+            <img src="../../assets/sprites/blackhole.png" alt="Black Hole" width=50 height=50 class="sprite">
         </template>
         <template #n>
             Black Hole
@@ -97,7 +97,7 @@ var size = 50;
     </StoreItem>
     <StoreItem>
         <template #sprite>
-            <img src="../assets/sprites/galaxy.png" alt="Galaxy" width=50 height=50 class="sprite">
+            <img src="../../assets/sprites/galaxy.png" alt="Galaxy" width=50 height=50 class="sprite">
         </template>
         <template #n>
             Galaxy

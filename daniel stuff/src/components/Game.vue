@@ -1,7 +1,9 @@
 <!-- This is a new file for our actual project lmao -->
 <script setup lang="ts">
 import CounterBox from '../components/CounterBox.vue'
-import StoreBox from '../components/StoreBox.vue'
+import StoreBox from './store/StoreBox.vue'
+import MiddleBox from './MiddleBox.vue'
+import MenuBox from './MenuBox.vue'
 </script>
 
 <template>
@@ -12,11 +14,11 @@ import StoreBox from '../components/StoreBox.vue'
     </div>
     <!-- NEGATIVE SPACE -->
     <div class="boxblue blue">
-        Statistics, activity log, tips, etc.
+        <MiddleBox />
     </div>
     <!-- SETTINGS -->
     <div class="boxgreen green">
-        View settings, leaderboard, and more
+        <MenuBox />
     </div>
     <!-- STORE -->
     <div class="box2 purple">
