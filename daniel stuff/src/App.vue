@@ -4,6 +4,7 @@
 import LoginPage from './components/LoginPage.vue'
 
 import Game from './components/Game.vue'
+import Leaderboard from './components/Leaderboard.vue'
 import NotFound from './components/NotFound.vue'
 import Counter from './components/Counter.vue';
 // other vue files can be swapped in for LoginPage to see what they look like, such as the one below
@@ -16,7 +17,8 @@ import { ref, computed } from 'vue'
 
 const routes = {
   '/': LoginPage,
-  '/game': Game
+  '/game': Game,
+  '/leaderboard': Leaderboard
 }
 
 const currentPath = ref(window.location.hash)
@@ -33,7 +35,7 @@ window.addEventListener('hashchange', () => {
 
 <template>
   <!-- Switch between LoginPage, SignUpPage, and Game -->
-  <Game />
+  <Leaderboard />
 </template>
 
 <!-- I think everything below this comment can be deleted? idk lol let's just leave it for now -->
