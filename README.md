@@ -1,6 +1,6 @@
 # DANIEL STUFF
 
-This is the first working version of our website. Right now it's just the login page.\
+This is the first working version of our website. Right now it's just the login page and some buttons for the game.\
 Basically I took the default Vue project template and added my own stuff to it/made a bunch of modifications. I left some of the files and stuff in if anyone wants to play around with them and see what they do.\
 Ideally, we will want a modular setup where entering the proper credentials allows someone to access the game environment, settings, account info, etc. This will all be hosted on a server somehow, but that's not my current task so I don't care lol
 
