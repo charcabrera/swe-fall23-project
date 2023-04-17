@@ -1,3 +1,9 @@
+
+// TODO Refactor building/upgrade terminology
+// TODO Add costs to the building upgrades
+// TODO Add prestige system
+// TODO Add more buildings/upgrades
+
 // The stuff you need to play the game
 let protons = 0;
 let electrons = 0; 
@@ -10,6 +16,15 @@ let maxNeutrons = 1;
 let grabPower = 1;
 let particlesPerSecond = 0;
 
+// Value by which each upgrade alters the production values
+let protonUpgrade1BaseVal = 1;
+let protonUpgrade1MultVal = 1;
+let electronUpgrade1BaseVal = 1;
+let electronUpgrade1MultVal = 1;
+let neutronUpgrade1BaseVal = 1;
+let neutronUpgrade1MultVal = 1;
+
+
 // Cost of all the upgrades duh
 let protonUpgradeCost = 10;
 let electronUpgradeCost = 10;
@@ -17,6 +32,9 @@ let neutronUpgradeCost = 10;
 let grabPowerUpgradeCost = 100;
 let weakGravityUpgradeCost = 20;
 let strongGravityUpgradeCost = 150;
+let protonUpgradeUpgradeCost = 0;
+let electronUpgradeUpgradeCost = 0;
+let neutronUpgradeUpgradeCost = 0;
 
 // Holds the Interval object(tick counter, timer, whatever you want to call it)
 let timerInterval; 
@@ -35,12 +53,15 @@ const clicked = () => {
     updateParticleCount();
 }
 
-// Each of the particle upgrades increments the base amount of possible particles per click
+/*-------- Clicker Upgrades -------*/
+
+// Each of the particle upgrades increments the base amount of possible particles per click for their respective particle
 const protonUpgrade = () => {
     if(protons >= protonUpgradeCost){
         protons -= protonUpgradeCost;
         protonUpgradeCost = Math.ceil(protonUpgradeCost * 1.7);
-        maxProtons++;
+        protonUpgrade1BaseVal++;
+        updateParticleVals();
         updateParticleCount();
         document.getElementById("proton-cost").innerHTML = "Cost: " + protonUpgradeCost + " protons";
     }
@@ -49,7 +70,8 @@ const electronUpgrade = () => {
     if(electrons >= electronUpgradeCost){
         electrons -= electronUpgradeCost;
         electronUpgradeCost = Math.ceil(electronUpgradeCost * 1.7);
-        maxElectrons++;
+        electronUpgrade1BaseVal++;
+        updateParticleVals();
         updateParticleCount();
         document.getElementById("electron-cost").innerHTML = "Cost: " + electronUpgradeCost + " electrons";
     }
@@ -58,7 +80,8 @@ const neutronUpgrade = () => {
     if(neutrons >= neutronUpgradeCost){
         neutrons -= neutronUpgradeCost;
         neutronUpgradeCost = Math.ceil(neutronUpgradeCost * 1.7);
-        maxNeutrons++;
+        neutronUpgrade1BaseVal++;
+        updateParticleVals();
         updateParticleCount();
         document.getElementById("neutron-cost").innerHTML = "Cost: " + neutronUpgradeCost + " neutrons";
     }
@@ -76,6 +99,9 @@ const grabPowerUpgrade = () => {
         updateParticleCount();
     }
 }
+
+
+/*-------- Idle Upgrades ----------*/
 
 // Increases particles per second by 1
 const weakGravityUpgrade = () => {
@@ -107,12 +133,56 @@ const strongGravityUpgrade = () => {
     }
 }
 
+/*-------- Building Upgrades -----------*/
+
+// Increases multiplier for protonUpgrade1
+const protonUpgradeUpgrade = () => {
+    if(protons >= protonUpgradeUpgradeCost){
+        protons -= protonUpgradeUpgradeCost;
+        protonUpgrade1MultVal++;
+        document.getElementById("puu-cost").innerHTML = "Cost: " + protonUpgradeUpgradeCost + " protons";
+        updateParticleVals();
+        updateParticleCount();
+    }
+}
+
+//Increases multiplier for electronUpgrade1
+const electronUpgradeUpgrade = () => {
+    if(electrons >= electronUpgradeUpgradeCost){
+        electrons -= electronUpgradeUpgradeCost;
+        electronUpgrade1MultVal++;
+        document.getElementById("euu-cost").innerHTML = "Cost: " + electronUpgradeUpgradeCost + " electrons";
+        updateParticleVals();
+        updateParticleCount();
+    }
+}
+
+//Increases multiplier for neutronUpgrade1
+const neutronUpgradeUpgrade = () => {
+    if(neutrons >= neutronUpgradeUpgradeCost){
+        neutrons -= neutronUpgradeUpgradeCost;
+        neutronUpgrade1MultVal++;
+        document.getElementById("nuu-cost").innerHTML = "Cost: " + neutronUpgradeUpgradeCost + " neutrons";
+        updateParticleVals();
+        updateParticleCount();
+    }
+}
+
+/*--------- Helper/Other Functions ----------*/
+
 // Increases each particle by particlesPerSecond -- Called by timerInterval
 const idleGain = () => {
     protons += particlesPerSecond;
     electrons += particlesPerSecond;
     neutrons += particlesPerSecond;
     updateParticleCount();
+}
+
+// Updates max particle values
+const updateParticleVals = () => {
+    maxProtons = protonUpgrade1BaseVal * protonUpgrade1MultVal;
+    maxElectrons = electronUpgrade1BaseVal * electronUpgrade1MultVal;
+    maxNeutrons = neutronUpgrade1BaseVal * neutronUpgrade1MultVal;
 }
 
 // Updates tick counter with new particlesPerSecond value
@@ -139,6 +209,7 @@ const updateParticleCount = () => {
 const updatePPS = () => {
     document.getElementById("pps").innerHTML = "Particles per second: " + particlesPerSecond;
 }
+
 
 // This is just here to initialize the tick counter at game launch
 startGame();
