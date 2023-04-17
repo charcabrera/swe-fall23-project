@@ -6,8 +6,7 @@ Ideally, we will want a modular setup where entering the proper credentials allo
 
 ## QUICK START
 - Clone repository
-- Navigate to "daniel stuff" directory
-- [If you haven't done `npm install` on your computer before, do that now. This installs Node.js]
+- Run `npm install` in the base directory
 - Run command `npm run dev` and click the localhost link. The server is now being hosted on your computer and responds to live code updates
 - Type `q` in the terminal to quit (shuts down the server)
 
