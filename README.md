@@ -16,4 +16,3 @@ Ideally, we will want a modular setup where entering the proper credentials allo
   - The `icons` folder can probably be deleted but I'm too scared to actually do that yet in case it helps for future tasks
 - `src\assets` has `base.css` (for the color scheme and primary website fonts) and `main.css` (some other stuff idk lol but it calls `import base.css`). It also has a bunch of images and stuff that i'm continuing to add/modify/delete
 - `index.html` calls `main.ts` (TypeScript file) which imports `main.css` and mounts `App.vue` which I'm just gonna assume is the procedure for how the app runs in the first place
-- Everything else in the `daniel stuff` folder is black magic and I have no idea what they do / what will happen if you edit them. good luck tho
