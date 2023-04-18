@@ -24,7 +24,7 @@ window.addEventListener('hashchange', () => {
 
 <template>
   <!-- Switch between LoginPage, SignUpPage, Game, and Leaderboard -->
-  <Game />
+  <LoginPage />
 </template>
 
 <!-- I think everything below this comment can be deleted? idk lol let's just leave it for now -->

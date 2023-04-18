@@ -1,9 +1,11 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 const app = express()
 const port = 8001
 
 app.use(bodyParser.json())
+app.use(cors())
 
 app.post('/register', (req, res) => {
 	res.send({

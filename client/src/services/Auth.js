@@ -5,8 +5,3 @@ export default {
 		return Api().post('register', credentials)
 	}
 }
-
-Auth.register({
-	user: 'gay',
-	pass: 'penis'
-})
