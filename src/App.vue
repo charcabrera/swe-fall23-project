@@ -8,6 +8,9 @@ import Leaderboard from './components/Leaderboard.vue'
 
 import { ref, computed } from 'vue'
 
+// attempt to route between URLs
+
+
 const routes = {
   '/': LoginPage,
   '/game': Game,

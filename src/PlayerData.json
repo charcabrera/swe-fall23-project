@@ -1,0 +1,25 @@
+{
+    "player_username": "John Doe",
+    "universeAge": 0,
+    "timesPrestiged": 0,
+    "achievements": [false, false, false, false, false, false],
+
+    "currencies": {
+      "protons": 0,
+      "neutrons": 0,
+      "electrons": 0
+    },
+    
+    "objects": {
+        "atom": 0,
+        "molecule": 0,
+        "molecloud": 0,
+        "solarsystem": 0,
+        "planet": 0,
+        "protodisk": 0,
+        "star": 0,
+        "blackhole": 0,
+        "galaxy": 0
+    }
+}
+  
