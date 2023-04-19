@@ -10,6 +10,9 @@ import { ref, computed } from 'vue'
 
 // attempt to route between URLs
 
+// PropTest
+import ButtonTest from './components/PropTest/ButtonTest.vue'
+
 
 const routes = {
   '/': LoginPage,
@@ -23,11 +26,16 @@ window.addEventListener('hashchange', () => {
   currentPath.value = window.location.hash
 })
 
+//const fs = require('fs');
+methods: {
+
+}
+
 </script>
 
 <template>
   <!-- Switch between LoginPage, SignUpPage, Game, and Leaderboard -->
-  <Game />
+  <ButtonTest />
 </template>
 
 <!-- I think everything below this comment can be deleted? idk lol let's just leave it for now -->

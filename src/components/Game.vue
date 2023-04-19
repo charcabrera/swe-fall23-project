@@ -4,6 +4,12 @@ import CounterBox from '../components/CounterBox.vue'
 import StoreBox from './store/StoreBox.vue'
 import MiddleBox from './MiddleBox.vue'
 import MenuBox from './MenuBox.vue'
+
+// attempt to connect with JSON
+import PlayerData from "../PlayerData.json"
+import { ref, computed } from 'vue'
+const data = ref(PlayerData)
+
 </script>
 
 <template>
@@ -15,6 +21,9 @@ import MenuBox from './MenuBox.vue'
     <!-- NEGATIVE SPACE -->
     <div class="boxblue blue">
         <MiddleBox />
+        <div v-for="x in PlayerData" class = "test">
+        <!-- {{ x.valueOf.arguments }} -->
+        </div>
     </div>
     <!-- SETTINGS -->
     <div class="boxgreen green">
