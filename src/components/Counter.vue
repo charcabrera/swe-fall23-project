@@ -17,9 +17,8 @@
 <script lang="ts">
 
 
-  export default {
+export default {
     data() {
-        
       return {
         count: 0,
         isDisabled: false,
@@ -75,32 +74,17 @@ button {
   background-image: url('daniel stuff\src\assets\sprites\atom.png');
 }
 
-.button-with-image {
-  background-image: url('daniel stuff\src\assets\sprites\atom.png');
-  background-size: cover;
-  color: white;
-  font-size: 18px;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-} 
-
-.counter-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
 .counter-box {
   display:table;
   flex-direction: column;
   align-items: center;
-  padding: 5px;
+  padding: 10px;
   background-color: var(--box-color);
   border-radius: 5px;
   height: 50px;
+  width: 50px;
   transform: scale(0.9);
+  font-size: large;
 }
 </style>
   

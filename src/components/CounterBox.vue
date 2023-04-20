@@ -1,6 +1,7 @@
 <!-- This is a new file for our actual project lmao -->
 <script setup lang="ts">
 import Counter from '../components/Counter.vue'
+
 // PROPS
 const props = defineProps({
   protoncount: Number,
@@ -14,7 +15,7 @@ const props = defineProps({
   <div class="container2">
     <Counter :cnt="protoncount">
         <template #sprite>
-            <img src="../assets/sprites/currency/proton.png" alt="Proton" width=50 height=50 class="sprite">
+            <img src="../assets/sprites/currency/proton.png" alt="Proton" class="sprite" id="currency">
         </template>
         <template #counter>
             {{ protoncount }}
@@ -25,7 +26,7 @@ const props = defineProps({
     </Counter>
     <Counter :cnt="neutroncount">
         <template #sprite>
-            <img src="../assets/sprites/currency/neutron.png" alt="Neutron" width=50 height=50 class="sprite">
+            <img src="../assets/sprites/currency/neutron.png" alt="Neutron" class="sprite" id="currency">
         </template>
         <template #counter>
             {{ neutroncount }}
@@ -36,7 +37,7 @@ const props = defineProps({
     </Counter>
     <Counter :cnt="electroncount">
         <template #sprite>
-            <img src="../assets/sprites/currency/electron.png" alt="Electron" width=50 height=50 class="sprite">
+            <img src="../assets/sprites/currency/electron.png" alt="Electron" class="sprite" id="currency">
         </template>
         <template #counter>
             {{ electroncount }}
@@ -53,7 +54,8 @@ const props = defineProps({
 .container2 {
   display: flex;
   flex-wrap: wrap;
-
+  justify-content: center;
+  transform: scale(1.0);
 }
 
 .sprite {
@@ -62,5 +64,14 @@ const props = defineProps({
     margin-left: auto;
     margin-right: auto;
   }
+
+:root {
+  --image-size: 100px;
+}
+
+#currency {
+  width: var(--image-size);
+  height: var(--image-size);
+}
 
 </style>
