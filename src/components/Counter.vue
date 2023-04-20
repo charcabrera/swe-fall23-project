@@ -3,7 +3,7 @@
         <image>
             <slot name="sprite"></slot>
         </image>
-        <br>
+
         <name class="name">
             <slot name="n"></slot>
         </name>
@@ -82,7 +82,7 @@ button {
   background-color: var(--box-color);
   border-radius: 5px;
   height: 50px;
-  width: 50px;
+  width: 150px;
   transform: scale(0.9);
   font-size: large;
 }

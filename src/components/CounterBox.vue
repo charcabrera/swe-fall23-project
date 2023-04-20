@@ -15,7 +15,7 @@ const props = defineProps({
   <div class="container2">
     <Counter :cnt="protoncount">
         <template #sprite>
-            <img src="../assets/sprites/currency/proton.png" alt="Proton" class="sprite" id="currency">
+            <img src="../assets/sprites/currency/proton.png" alt="Proton" class="sprite" id="currency" width="75px" height="75px">
         </template>
         <template #counter>
             {{ protoncount }}
@@ -74,4 +74,7 @@ const props = defineProps({
   height: var(--image-size);
 }
 
+img {
+    transform: scale(1.1);
+}
 </style>
