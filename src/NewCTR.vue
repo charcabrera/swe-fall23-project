@@ -12,7 +12,7 @@ export default {
 </script>
 
 <template>
-  Hello
+  Hellohellohellohello
 </template>
 
 <style scoped>

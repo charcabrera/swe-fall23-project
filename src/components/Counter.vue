@@ -7,14 +7,16 @@
         <name class="name">
             <slot name="n"></slot>
         </name>
-        <h1>{{ count }}</h1>
-        <button :disabled="isDisabled" @click="incrementCount" class="button-with-image">
-            {{ isDisabled ? `${secondsLeft} seconds` : 'Generate' }}
-        </button>
+        <h1>
+          <slot name="counter"></slot>
+        </h1>
+        
     </div>
 </template>
   
 <script lang="ts">
+
+
   export default {
     data() {
         

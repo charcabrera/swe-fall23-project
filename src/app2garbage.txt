@@ -13,3 +13,9 @@
         <br>
         Electrons: {{ e }}
       </notbutton>
+
+      ///
+
+      <button :disabled="isDisabled" @click="incrementCount" class="button-with-image">
+            {{ isDisabled ? `${secondsLeft} seconds` : 'Generate' }}
+        </button>

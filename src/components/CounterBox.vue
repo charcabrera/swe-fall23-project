@@ -1,32 +1,48 @@
 <!-- This is a new file for our actual project lmao -->
 <script setup lang="ts">
 import Counter from '../components/Counter.vue'
+// PROPS
+const props = defineProps({
+  protoncount: Number,
+  neutroncount: Number,
+  electroncount: Number
+})
+
 </script>
 
 <template>
   <div class="container">
-    <Counter>
+    <Counter :cnt="protoncount">
         <template #sprite>
             <img src="../assets/sprites/currency/proton.png" alt="Proton" width=50 height=50 class="sprite">
         </template>
+        <template #counter>
+            {{ protoncount }}
+        </template>
         <template #n>
-            Proton
+            Protons
         </template>
     </Counter>
-    <Counter>
+    <Counter :cnt="neutroncount">
         <template #sprite>
             <img src="../assets/sprites/currency/neutron.png" alt="Neutron" width=50 height=50 class="sprite">
         </template>
+        <template #counter>
+            {{ neutroncount }}
+        </template>
         <template #n>
-            Neutron
+            Neutrons
         </template>
     </Counter>
-    <Counter>
+    <Counter :cnt="electroncount">
         <template #sprite>
             <img src="../assets/sprites/currency/electron.png" alt="Electron" width=50 height=50 class="sprite">
         </template>
+        <template #counter>
+            {{ electroncount }}
+        </template>
         <template #n>
-            Electron
+            Electrons
         </template>
     </Counter>
   </div>

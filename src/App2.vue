@@ -3,6 +3,7 @@
     <div class="container">
         <!-- COUNTERS -->
         <div class="boxred red">
+            <CounterBox :protoncount="p" :neutroncount="n" :electroncount="e"/>
             <br>
             <currency>
             <!-- <img src="./assets/sprites/currency/proton.png" alt="proton" style="width:100px;height:100px;">  -->
@@ -20,6 +21,7 @@
             <currency>
                 Electrons: {{ e }}
             </currency>
+            
         </div>
         <!-- NEGATIVE SPACE -->
         <div class="boxblue blue" margin="auto">
@@ -34,6 +36,7 @@
             <div>
             Time: {{ count }} <br>
             Rate: {{ rate }}
+            <NewCTR />
             </div>
         </div>
         <!-- STORE -->
@@ -97,16 +100,19 @@
                         ">Protoplanetary Disks: <br>{{ protodisk }}<br>Cost: 5 molecular clouds, 1 star (star not spent)
                 </button>
             </itembox>           
-
+            
             
         </div>
     </div>
 
-    <NewCTR />
+    
   </template>
   
 <script lang="ts">
 import NewCTR from './NewCTR.vue'
+import CounterBox from './components/CounterBox.vue';
+
+
 
 export default {
     data() {
@@ -194,8 +200,9 @@ export default {
     },
 	// components: imports components
 	components: {
-		NewCTR
-	},
+    NewCTR,
+    CounterBox
+},
     // created == starts running as soon as component is created
     created() {
         this.intervalId = setInterval(() => { 
