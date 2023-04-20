@@ -2,7 +2,27 @@
 <script setup lang="ts">
 import StoreItem from './StoreItem.vue'
 
-var size = 50;
+// PROPS
+const props = defineProps({
+  // the store keeps track of currencies...
+  protoncount: Number,
+  neutroncount: Number,
+  electroncount: Number,
+  // as well as celestial objects
+  atom_count: Number,
+  molecule_count: Number,
+  molecloud_count: Number,
+  star_count: Number,
+  protodisk_count: Number,
+  planet_count: Number,
+  solarsystem_count: Number,
+  blackhole_count: Number,
+  galaxy_count: Number,
+  // these are extras to spice up the game. add them in some other time
+  // BONUS_neutronstar_count: Number
+  // BONUS_quasistar_count: Number
+  // BONUS_life_planet_count: Number
+})
 </script>
 
 <template>

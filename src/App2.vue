@@ -23,6 +23,20 @@
         </div>
         <!-- STORE -->
         <div class="box2 purple">
+            <StoreBox 
+                :protoncount="p" 
+                :neutroncount="n" 
+                :electroncount="e"
+                :atom_count="atom"
+                :molecule_count="molecule"
+                :molecloud_count="molecloud"
+                :star_count="star"
+                :protodisk_count="protodisk"
+                :planet_count="planet"
+                :solarsystem_count="solarsystem"
+                :blackhole_count="blackhole"
+                :galaxy_count="galaxy"
+            />
             <itembox>
                 <button :class="{ 'canbuy': (p>0 && n>0 && e>0), 'cannotbuy': (p<=0 && n<=0 && e<=0) }" @click="
                         currencies = [p,n,e];
@@ -93,7 +107,7 @@
 <script lang="ts">
 import NewCTR from './NewCTR.vue'
 import CounterBox from './components/CounterBox.vue';
-
+import StoreBox from './components/store/StoreBox.vue';
 
 
 export default {
@@ -112,6 +126,7 @@ export default {
         solarsystem: 0,
         star: 0,
         blackhole: 0,
+        galaxy: 0,
         // idk lol
         count: 0,
         price: 0,
@@ -183,7 +198,8 @@ export default {
 	// components: imports components
 	components: {
     NewCTR,
-    CounterBox
+    CounterBox,
+    StoreBox
 },
     // created == starts running as soon as component is created
     created() {
