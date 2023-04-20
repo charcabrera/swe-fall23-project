@@ -18,7 +18,7 @@
 </template>
   
 <script lang="ts">
-// const props = defineProps({}) // why does StoreItem.vue hate being passed props?
+// const props = defineProps({}) // why does the page go blank?
 export default {
     data() {        
       return {

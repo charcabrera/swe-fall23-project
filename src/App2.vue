@@ -7,9 +7,9 @@
         </div>
         <!-- NEGATIVE SPACE -->
         <div class="boxblue blue" margin="auto">
-            <button id="BIG" @click="
+        <button id="BIG" @click="
                         addRandomCurrButton()
-                        ">BUTTON OF FORTUNE
+                        ">
         </button>
         <br>
         </div>
@@ -108,7 +108,17 @@ import CounterBox from './components/CounterBox.vue';
 import MenuBox from './components/MenuBox.vue';
 import StoreBox from './components/store/StoreBox.vue';
 
+const myInput = document.querySelector('#myInput');
+const myDiv2 = document.querySelector('#myDiv') as HTMLDivElement;
+/*
+myInput.addEventListener('input', () => {
+  // Check conditions here
+  // ...
 
+  // Change background image
+  myDiv2.style.backgroundImage = 'url(assets/sprites/universestates/phase1.png)';
+});
+*/
 export default {
     data() {
       return {
@@ -130,6 +140,7 @@ export default {
         count: 0,
         price: 0,
         i: 0,
+        phase: 1,
         // extra
         currencies: [],
         prices: [],
@@ -219,7 +230,7 @@ export default {
   width: 30vh;
   height: 30vh;   
   margin: auto;
-  background-image: url(circle.png);
+  background-image: url(assets/sprites/universestates/phase4.png);
   background-size: contain;
 }
 
