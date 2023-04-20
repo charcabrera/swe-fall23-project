@@ -1,8 +1,10 @@
 <template>
-    <div>
+    <div id="gameworld">
       <button id="BIG" @click="
                       addRandomCurrButton()
-                      ">BUTTON OF FORTUNE</button> <br>
+                      ">BUTTON OF FORTUNE
+      </button> 
+      <br>
       <notbutton>
         Protons: {{ p }}
       </notbutton>
@@ -14,6 +16,9 @@
       </notbutton>
       <br>
       <button @click="
+                      // ideal button:
+                      // - contains image
+                      // - calls function to compare current values with target
                       args=[p, n, e];
                       if(p > 0 && n > 0 && e > 0) {
                         p--; 
@@ -35,7 +40,10 @@
                         // modify modifier
                         modifier+=2;
                       }
-                      ">Molecules: {{ molecule }}</button>
+                      ">Molecules: {{ molecule }}
+      </button>
+      <NewCTR />
+      <CounterVue />
     </div>
     <div>
         Time: {{ count }} <br>
@@ -44,6 +52,8 @@
   </template>
   
 <script lang="ts">
+import NewCTR from './NewCTR.vue'
+import Counter from './components/Counter.vue'
 
 export default {
     data() {

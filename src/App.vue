@@ -4,6 +4,7 @@
 import LoginPage from './components/LoginPage.vue'
 import Game from './components/Game.vue'
 import Leaderboard from './components/Leaderboard.vue'
+import App2 from './App2.vue'
 // other vue files can be swapped in for LoginPage to see what they look like, such as the one below
 
 import { ref, computed } from 'vue'
