@@ -1,3 +1,4 @@
+
 <template>
     <div class="container">
         <!-- COUNTERS -->
@@ -105,7 +106,6 @@
   </template>
   
 <script lang="ts">
-
 import NewCTR from './NewCTR.vue'
 
 export default {
@@ -192,6 +192,10 @@ export default {
             this.atom = 0;
         }
     },
+	// components: imports components
+	components: {
+		NewCTR
+	},
     // created == starts running as soon as component is created
     created() {
         this.intervalId = setInterval(() => { 
