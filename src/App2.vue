@@ -3,15 +3,15 @@
       <button id="BIG" @click="
                       addRandomCurrButton()
                       ">BUTTON OF FORTUNE</button> <br>
-      <button @click="
-                      p++
-                      ">Protons: {{ p }}</button>
-      <button @click="
-                      n++
-                      ">Neutrons: {{ n }}</button>
-      <button @click="
-                      e++
-                      ">Electrons: {{ e }}</button>
+      <notbutton>
+        Protons: {{ p }}
+      </notbutton>
+      <notbutton>
+        Neutrons: {{ n }}
+      </notbutton>
+      <notbutton>
+        Electrons: {{ e }}
+      </notbutton>
       <br>
       <button @click="
                       args=[p, n, e];
@@ -141,6 +141,12 @@ button {
   text-align: center;
   width: 10vh;
   height: 5vh;
+}
+
+notbutton {
+    text-align: center;
+  width: 10vh;
+  height: 5vh;   
 }
 </style>
   
