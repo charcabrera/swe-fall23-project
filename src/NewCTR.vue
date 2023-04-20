@@ -14,3 +14,7 @@ export default {
 <template>
   Hello
 </template>
+
+<style scoped>
+
+</style>

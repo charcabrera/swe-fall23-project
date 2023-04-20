@@ -1,10 +1,7 @@
 <template>
-    <div id="gameworld">
-      <button id="BIG" @click="
-                      addRandomCurrButton()
-                      ">BUTTON OF FORTUNE
-      </button> 
-      <br>
+    <div class="container">
+    <!-- COUNTERS -->
+    <div class="boxred red">
       <notbutton>
         Protons: {{ p }}
       </notbutton>
@@ -14,8 +11,21 @@
       <notbutton>
         Electrons: {{ e }}
       </notbutton>
-      <br>
-      <button @click="
+    </div>
+    <!-- NEGATIVE SPACE -->
+    <div class="boxblue blue">
+        <button id="BIG" @click="
+                      addRandomCurrButton()
+                      ">BUTTON OF FORTUNE
+      </button>
+    </div>
+    <!-- SETTINGS -->
+    <div class="boxgreen green">
+        
+    </div>
+    <!-- STORE -->
+    <div class="box2 purple">
+        <button @click="
                       // ideal button:
                       // - contains image
                       // - calls function to compare current values with target
@@ -31,9 +41,9 @@
                         // modify modifier
                         modifier++;
                       }
-                      ">Atoms: {{ atom }}</button>
-      <br>
-      <button @click="
+                      ">Atoms: {{ atom }}
+        </button>
+        <button @click="
                       if(atom >= 2) {
                         atom-=2;
                         molecule++;
@@ -41,19 +51,37 @@
                         modifier+=2;
                       }
                       ">Molecules: {{ molecule }}
-      </button>
-      <NewCTR />
-      <CounterVue />
+        </button>
+        <button @click="
+                      if(atom >= 2) {
+                        atom-=2;
+                        molecule++;
+                        // modify modifier
+                        modifier+=2;
+                      }
+                      ">Molecules: {{ molecule }}
+        </button>
+        
+    </div>
+  </div>
+    <div>
+       <br>
+      
+      <br>
+      
+      <br>
+
     </div>
     <div>
         Time: {{ count }} <br>
         Rate: {{ rate }}
     </div>
+    <NewCTR />
   </template>
   
 <script lang="ts">
+
 import NewCTR from './NewCTR.vue'
-import Counter from './components/Counter.vue'
 
 export default {
     data() {
@@ -154,9 +182,60 @@ button {
 }
 
 notbutton {
-    text-align: center;
+  color: aliceblue;
+  text-align: center;
   width: 10vh;
   height: 5vh;   
+}
+
+/* styles from Game.vue */
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 193vh;
+  height: 100vh;
+}
+
+.boxred {
+  width: 30%;
+  /* Determines height of box */
+  height: 60%;
+}
+
+.boxblue {
+  width: 50%;
+  /* Determines height of box */
+  height: 60%;
+}
+
+.boxgreen {
+  width: 20%;
+  /* Determines height of box */
+  height: 60%;
+}
+
+.box2 {
+  width: 100%;
+  /* Determines height of box */
+  height: 40%;
+}
+
+.red {
+  background-color: red;
+  overflow-y:auto;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.green {
+  background-color: green;
+}
+
+.purple {
+  background-color: purple;
 }
 </style>
   

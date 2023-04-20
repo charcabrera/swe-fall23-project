@@ -16,22 +16,19 @@ const data = ref(PlayerData)
   <div class="container">
     <!-- COUNTERS -->
     <div class="boxred red">
-        <CounterBox />
+        
     </div>
     <!-- NEGATIVE SPACE -->
     <div class="boxblue blue">
-        <MiddleBox />
-        <div v-for="x in PlayerData" class = "test">
-        <!-- {{ x.valueOf.arguments }} -->
-        </div>
+        
     </div>
     <!-- SETTINGS -->
     <div class="boxgreen green">
-        <MenuBox />
+        
     </div>
     <!-- STORE -->
     <div class="box2 purple">
-        <StoreBox />
+        
     </div>
   </div>
 </template>
@@ -74,9 +71,6 @@ const data = ref(PlayerData)
 .red {
   background-color: red;
   overflow-y:auto;
-
-  /* background-image: url("../assets/cars 2.jpg");
-  background-size:contain; */
 }
 
 .blue {
