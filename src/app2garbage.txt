@@ -1,0 +1,15 @@
+      <notbutton>
+        <img src="./assets/sprites/currency/proton.png" alt="proton" style="width:100px;height:100px;">
+        <br>
+        Protons: {{ p }}
+      </notbutton>
+      <notbutton>
+        <img src="./assets/sprites/currency/proton.png" alt="proton" style="width:100px;height:100px;">
+        <br>
+        Neutrons: {{ n }}
+      </notbutton>
+      <notbutton>
+        <img src="./assets/sprites/currency/proton.png" alt="proton" style="width:100px;height:100px;">
+        <br>
+        Electrons: {{ e }}
+      </notbutton>

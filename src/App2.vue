@@ -1,82 +1,106 @@
 <template>
     <div class="container">
-    <!-- COUNTERS -->
-    <div class="boxred red">
-      <notbutton>
-        Protons: {{ p }}
-      </notbutton>
-      <notbutton>
-        Neutrons: {{ n }}
-      </notbutton>
-      <notbutton>
-        Electrons: {{ e }}
-      </notbutton>
-    </div>
-    <!-- NEGATIVE SPACE -->
-    <div class="boxblue blue" margin="auto">
-        <button id="BIG" @click="
-                      addRandomCurrButton()
-                      ">BUTTON OF FORTUNE
-      </button>
-      <br>
-    </div>
-    <!-- SETTINGS -->
-    <div class="boxgreen green">
-        
-    </div>
-    <!-- STORE -->
-    <div class="box2 purple">
-        <button @click="
-                      // ideal button:
-                      // - contains image
-                      // - calls function to compare current values with target
-                      args=[p, n, e];
-                      if(p > 0 && n > 0 && e > 0) {
-                        p--; 
-                        n--; 
-                        e--; 
-                        atom++;
-                        // modify tick rate (advanced)
-                        // rate = rate * 0.9;
+        <!-- COUNTERS -->
+        <div class="boxred red">
+            <br>
+            <currency>
+            <!-- <img src="./assets/sprites/currency/proton.png" alt="proton" style="width:100px;height:100px;">  -->
+                Protons: {{ p }}
+            </currency>
+            <br>
+            <br>
+            <br>
+            <currency>
+                Neutrons: {{ n }}
+            </currency>
+            <br>
+            <br>
+            <br>
+            <currency>
+                Electrons: {{ e }}
+            </currency>
+        </div>
+        <!-- NEGATIVE SPACE -->
+        <div class="boxblue blue" margin="auto">
+            <button id="BIG" @click="
+                        addRandomCurrButton()
+                        ">BUTTON OF FORTUNE
+        </button>
+        <br>
+        </div>
+        <!-- SETTINGS -->
+        <div class="boxgreen green">
+            <div>
+            Time: {{ count }} <br>
+            Rate: {{ rate }}
+            </div>
+        </div>
+        <!-- STORE -->
+        <div class="box2 purple">
+            <itembox>
+                <button :class="{ 'canbuy': (p>0 && n>0 && e>0), 'cannotbuy': (p<=0 && n<=0 && e<=0) }" @click="
+                        currencies = [p,n,e];
+                        prices = [1,1,1];
+                        if(canAfford( currencies, prices )) {
+                            p--;
+                            n--;
+                            e--;
+                            atom++;
+                            modifier++;
+                        }
+                        ">Atoms: <br>{{ atom }}<br>Cost: 1 proton, 1 neutron, 1 electron
+                </button>
+            </itembox>
+            <itembox>
+                <button :class="{ 'canbuy': (atom>=3), 'cannotbuy': (atom<3) }" @click="
+                        currencies = [atom];
+                        prices = [3];
+                        if(canAfford( currencies,prices )) {
+                            atom-=prices[0];
+                            molecule++;
+                            modifier+=2;
+                        }
+                        ">Molecules: <br>{{ molecule }}<br>Cost: 3 atoms
+                </button>
+            </itembox>
+            <itembox>
+                <button :class="{ 'canbuy': (molecule>=5), 'cannotbuy': (molecule<5) }" @click="
+                        price = 5;
+                        if(molecule >= price) {
+                            molecule-=price;
+                            molecloud++;
+                            modifier+=5;
+                        }
+                        ">Molecular clouds: <br>{{ molecloud }}<br>Cost: 5 molecules
+                </button>
+            </itembox>
+            <itembox>
+                <button :class="{ 'canbuy': (molecloud >= 10), 'cannotbuy': (molecloud < 10) }" @click="
+                        if(molecloud >= 10) {
+                            molecloud-=10;
+                            star++;
+                            modifier+=10;
+                        }
+                        ">Stars: <br>{{ star }}<br>Cost: 10 molecular clouds
+                </button>
+            </itembox>
+            <itembox>
+                <button :class="{ 'canbuy': (molecloud>=5 && star>0), 'cannotbuy': (molecloud>=5 && star>0)==false }" @click="
+                        currencies = [molecloud, star]; // the star is not spent in this purchase; just a credit check
+                        prices = [5, 1];
+                        if(canAfford( currencies,prices )) {
+                            molecloud-=prices[0];
+                            protodisk++;
+                            modifier+=15;
+                        }
+                        ">Protoplanetary Disks: <br>{{ protodisk }}<br>Cost: 5 molecular clouds, 1 star (star not spent)
+                </button>
+            </itembox>           
 
-                        // modify modifier
-                        modifier++;
-                      }
-                      ">Atoms: {{ atom }}
-        </button>
-        <button @click="
-                      if(atom >= 2) {
-                        atom-=2;
-                        molecule++;
-                        // modify modifier
-                        modifier+=2;
-                      }
-                      ">Molecules: {{ molecule }}
-        </button>
-        <button @click="
-                      if(atom >= 2) {
-                        atom-=2;
-                        molecule++;
-                        // modify modifier
-                        modifier+=2;
-                      }
-                      ">Molecules: {{ molecule }}
-        </button>
-        
+            
+        </div>
     </div>
-  </div>
-    <div>
-       <br>
-      
-      <br>
-      
-      <br>
 
-    </div>
-    <div>
-        Time: {{ count }} <br>
-        Rate: {{ rate }}
-    </div>
     <NewCTR />
   </template>
   
@@ -102,8 +126,11 @@ export default {
         blackhole: 0,
         // idk lol
         count: 0,
+        price: 0,
+        i: 0,
         // extra
-        args: [],
+        currencies: [],
+        prices: [],
         picker: 0,
         rate: 1000,
         modifier: 0,
@@ -133,13 +160,20 @@ export default {
         // FIXME
         // input: array containing data values, array containing target values
         // output: boolean if data values are all greater than target values
-        canAfford() {
-            let y = 3; // array
-            for (let i = 0; i < y; i++) {
-                // if data is less than target
-                return false;
+        canAfford(currency: number[], price: number[]) {
+            for (let i = 0; i < price.length; i++) {
+                if(currency[i] < price[i]) {
+                    return false;
+                }
             }
             return true;
+        },
+        purchase_mod(currency: number[], price: number[], product: number, mod: number) {
+            for (let i = 0; i < price.length; i++) {
+                currency[i] -= price[i];
+            }
+            product = product + 1;
+            this.modifier += mod;
         },
         increaseSpeed() {
             clearInterval(this.intervalId)
@@ -171,9 +205,10 @@ export default {
 
 <style scoped>
 #BIG {
+    color: black;
   text-align: center;
-  width: 15vh;
-  height: 15vh;   
+  width: 30vh;
+  height: 30vh;   
   margin: auto;
   background-image: url(circle.png);
   background-size: contain;
@@ -181,15 +216,28 @@ export default {
 
 button {
   text-align: center;
-  width: 10vh;
-  height: 5vh;
+  width: 20vh;
+  height: 10vh;
+  color: antiquewhite;
+  background-color: rgb(73, 73, 73);
+  border-radius: 10px;
 }
 
-notbutton {
-  color: aliceblue;
-  text-align: center;
-  width: 10vh;
-  height: 5vh;   
+itembox {
+    background-color: black;
+    padding: 40px;
+    border-radius: 10px;
+    width: 100px;
+    color: antiquewhite;
+}
+
+currency {
+    color: antiquewhite;
+    padding: 20px;
+    text-align: center;
+    border: 5px solid yellow;
+    background-color: black;
+    border-radius: 10px;
 }
 
 /* styles from Game.vue */
@@ -229,6 +277,7 @@ notbutton {
 .red {
   background-color: red;
   overflow-y:auto;
+  text-align: center;
 }
 
 .blue {
@@ -242,5 +291,13 @@ notbutton {
 .purple {
   background-color: purple;
 }
+
+.canbuy {
+  background-color: green;
+}
+.cannotbuy {
+    background-color: rgb(73, 73, 73);
+}
+
 </style>
   
