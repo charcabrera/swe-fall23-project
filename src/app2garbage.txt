@@ -19,3 +19,23 @@
       <button :disabled="isDisabled" @click="incrementCount" class="button-with-image">
             {{ isDisabled ? `${secondsLeft} seconds` : 'Generate' }}
         </button>
+
+///
+
+            <br>
+            <currency>
+            <!-- <img src="./assets/sprites/currency/proton.png" alt="proton" style="width:100px;height:100px;">  -->
+                Protons: {{ p }}
+            </currency>
+            <br>
+            <br>
+            <br>
+            <currency>
+                Neutrons: {{ n }}
+            </currency>
+            <br>
+            <br>
+            <br>
+            <currency>
+                Electrons: {{ e }}
+            </currency>

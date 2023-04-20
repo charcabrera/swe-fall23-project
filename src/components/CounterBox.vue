@@ -11,7 +11,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="container">
+  <div class="container2">
     <Counter :cnt="protoncount">
         <template #sprite>
             <img src="../assets/sprites/currency/proton.png" alt="Proton" width=50 height=50 class="sprite">
@@ -50,18 +50,17 @@ const props = defineProps({
 
 <!-- This is additional style information that wasn't put in the actual css files. It only applies to this vue file (scoped) -->
 <style scoped>
-.container {
+.container2 {
   display: flex;
   flex-wrap: wrap;
-  width: 150vh;
-  height: 100vh;
+
 }
 
 .sprite {
     justify-content: center;
     display: block;
-  margin-left: auto;
-  margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
   }
 
 </style>

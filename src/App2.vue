@@ -4,24 +4,6 @@
         <!-- COUNTERS -->
         <div class="boxred red">
             <CounterBox :protoncount="p" :neutroncount="n" :electroncount="e"/>
-            <br>
-            <currency>
-            <!-- <img src="./assets/sprites/currency/proton.png" alt="proton" style="width:100px;height:100px;">  -->
-                Protons: {{ p }}
-            </currency>
-            <br>
-            <br>
-            <br>
-            <currency>
-                Neutrons: {{ n }}
-            </currency>
-            <br>
-            <br>
-            <br>
-            <currency>
-                Electrons: {{ e }}
-            </currency>
-            
         </div>
         <!-- NEGATIVE SPACE -->
         <div class="boxblue blue" margin="auto">
