@@ -18,10 +18,9 @@
 </template>
   
 <script lang="ts">
-
-  export default {
-    data() {
-        
+// const props = defineProps({}) // why does StoreItem.vue hate being passed props?
+export default {
+    data() {        
       return {
         count: 0,
         isDisabled: false,
@@ -84,8 +83,8 @@ img {
 button {
     background-color: var(--button);
     font-family:'Courier New', Courier, monospace;
-    background-image: url('daniel stuff\src\assets\sprites\atom.png');
     justify-content: center;
+    text-align: center;
 }
 
 .button-with-image {
@@ -93,18 +92,11 @@ button {
     background-size: cover;
     color: white;
     font-size: 18px;
-    padding: 5px 10px;
+    padding: 5px 70px;
     border: none;
     border-radius: 5px;
     justify-content: center;
 } 
-
-.counter-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
 
 .counter-box {
   display:table;

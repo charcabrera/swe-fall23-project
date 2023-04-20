@@ -16,9 +16,7 @@
         <!-- SETTINGS -->
         <div class="boxgreen green">
             <div>
-            Time: {{ count }} <br>
-            Rate: {{ rate }}
-            <NewCTR />
+            <MenuBox />
             </div>
         </div>
         <!-- STORE -->
@@ -107,6 +105,7 @@
 <script lang="ts">
 import NewCTR from './NewCTR.vue'
 import CounterBox from './components/CounterBox.vue';
+import MenuBox from './components/MenuBox.vue';
 import StoreBox from './components/store/StoreBox.vue';
 
 
@@ -199,7 +198,8 @@ export default {
 	components: {
     NewCTR,
     CounterBox,
-    StoreBox
+    StoreBox,
+    MenuBox
 },
     // created == starts running as soon as component is created
     created() {
@@ -299,6 +299,7 @@ currency {
 
 .purple {
   background-color: purple;
+  justify-content: center;
 }
 
 .canbuy {

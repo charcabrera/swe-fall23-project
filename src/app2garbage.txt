@@ -39,3 +39,40 @@
             <currency>
                 Electrons: {{ e }}
             </currency>
+
+//////
+
+<button :class="{ 'canbuy': (p>0 && n>0 && e>0), 'cannotbuy': (p<=0 && n<=0 && e<=0) }" @click="
+                        currencies = [p,n,e];
+                        prices = [1,1,1];
+                        if(canAfford( currencies, prices )) {
+                            p--;
+                            n--;
+                            e--;
+                            atom++;
+                            modifier++;
+                        }
+                        ">Atoms: <br>{{ atom }}<br>Cost: 1 proton, 1 neutron, 1 electron
+                </button>
+
+//////
+
+atom_count: Number,
+  molecule_count: Number,
+  molecloud_count: Number,
+  star_count: Number,
+  protodisk_count: Number,
+  planet_count: Number,
+  solarsystem_count: Number,
+  blackhole_count: Number,
+  galaxy_count: Number,
+
+
+    font-family: 'TITLE', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-size: large;
+    background-color: black;
+    color: white;
+    height: 50px;
+    border-radius: 5px;
+    width: 250px;
