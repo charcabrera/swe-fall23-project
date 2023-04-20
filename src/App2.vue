@@ -13,11 +13,12 @@
       </notbutton>
     </div>
     <!-- NEGATIVE SPACE -->
-    <div class="boxblue blue">
+    <div class="boxblue blue" margin="auto">
         <button id="BIG" @click="
                       addRandomCurrButton()
                       ">BUTTON OF FORTUNE
       </button>
+      <br>
     </div>
     <!-- SETTINGS -->
     <div class="boxgreen green">
@@ -173,6 +174,9 @@ export default {
   text-align: center;
   width: 15vh;
   height: 15vh;   
+  margin: auto;
+  background-image: url(circle.png);
+  background-size: contain;
 }
 
 button {
@@ -207,6 +211,7 @@ notbutton {
   width: 50%;
   /* Determines height of box */
   height: 60%;
+  margin: auto;
 }
 
 .boxgreen {
