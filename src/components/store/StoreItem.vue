@@ -18,6 +18,7 @@
 </template>
   
 <script lang="ts">
+
   export default {
     data() {
         
@@ -46,7 +47,8 @@
       },
     },
   };
-  </script>
+
+</script>
   
   
 <style scoped>
@@ -115,7 +117,12 @@ button {
   transform: scale(0.9);
 }
 
-
+.canbuy {
+  background-color: green;
+}
+.cannotbuy {
+    background-color: rgb(73, 73, 73);
+}
 
 </style>
   

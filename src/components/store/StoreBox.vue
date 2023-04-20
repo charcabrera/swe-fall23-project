@@ -27,7 +27,7 @@ const props = defineProps({
 
 <template>
     <div class="container">
-    <StoreItem>
+    <StoreItem :protoncount="protoncount" :neutroncount="neutroncount" :electroncount="electroncount">
         <template #sprite>
             <img src="../../assets/sprites/atom.png" alt="Atom" width=50 height=50 class="sprite">
         </template>
