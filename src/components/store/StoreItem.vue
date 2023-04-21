@@ -1,3 +1,14 @@
+<script setup lang="ts">
+
+const props = defineProps({
+  item: String,
+  protoncount: Number,
+  neutroncount: Number,
+  electroncount: Number,
+});
+
+</script>
+
 <template>
     <div class="counter-box">
         <image>
@@ -11,14 +22,15 @@
             <slot name="cost"></slot>
         </cost>
         <h1>{{ count }}</h1>
-        <button :disabled="isDisabled" @click="incrementCount" class="button-with-image">
+        <button :disabled="isDisabled" @click="purchase" class="button-with-image">
             {{ isDisabled ? `${secondsLeft} seconds` : 'Purchase' }}
         </button>
     </div>
 </template>
   
 <script lang="ts">
-// const props = defineProps({}) // why does the page go blank?
+
+ 
 export default {
     data() {        
       return {
@@ -44,6 +56,14 @@ export default {
           }, 1000);
         }
       },
+      purchase(){
+        if(this.item === "atom"){
+          if(this.protoncount >= 1 && this.electroncount >=2){
+            this.incrementCount();
+            this.$emit('buy-atom');
+          }
+        }
+      }
     },
   };
 

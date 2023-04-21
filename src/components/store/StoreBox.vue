@@ -27,7 +27,7 @@ const props = defineProps({
 
 <template>
     <div class="container">
-    <StoreItem :protoncount="protoncount" :neutroncount="neutroncount" :electroncount="electroncount">
+    <StoreItem item="atom" :protoncount="protoncount" :neutroncount="neutroncount" :electroncount="electroncount" @buy-atom="buyAtom">
         <template #sprite>
             <img src="../../assets/sprites/atom.png" alt="Atom" width=50 height=50 class="sprite">
         </template>
@@ -129,6 +129,17 @@ const props = defineProps({
 
     </div>
 </template>
+
+<script lang="ts">
+export default{
+    methods: {
+        buyAtom(){
+            this.$emit('buy-atom');
+        }
+    }
+}
+
+</script>
 
 <style scoped>
 .sprite {
