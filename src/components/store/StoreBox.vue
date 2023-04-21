@@ -71,7 +71,7 @@ const props = defineProps({
             10 Molecular Clouds
         </template>
     </StoreItem>
-    <StoreItem>
+    <StoreItem item="protodisk" :display="protodisk_count" :molecloud_count="molecloud_count" @buy-protodisk="buyProtodisk">
         <template #sprite>
             <img src="../../assets/sprites/protodisk.png" alt="Protoplanetary Disk" width=50 height=50 class="sprite">
         </template>
@@ -82,7 +82,7 @@ const props = defineProps({
             5 Molecular Clouds
         </template>
     </StoreItem>
-    <StoreItem>
+    <StoreItem item="planet" :display="planet_count" :molecloud_count="molecloud_count" :protodisk_count="protodisk_count" @buy-planet="buyPlanet">
         <template #sprite>
             <img src="../../assets/sprites/planet.png" alt="Planet" width=50 height=50 class="sprite">
         </template>
@@ -93,7 +93,7 @@ const props = defineProps({
             1 PPD, 5 Molecular Clouds
         </template>
     </StoreItem>
-    <StoreItem>
+    <StoreItem item="solarsystem" :display="solarsystem_count" :star_count="star_count" :planet_count="planet_count" @buy-solarsystem="buySolarsystem">
         <template #sprite>
             <img src="../../assets/sprites/solarsystem.png" alt="Solar System" width=50 height=50 class="sprite">
         </template>
@@ -104,7 +104,7 @@ const props = defineProps({
             1 Star, 8 Planets
         </template>
     </StoreItem>
-    <StoreItem>
+    <StoreItem item="blackhole" :display="blackhole_count" :solarsystem_count="solarsystem_count" @buy-blackhole="buyBlackhole">
         <template #sprite>
             <img src="../../assets/sprites/blackhole.png" alt="Black Hole" width=50 height=50 class="sprite">
         </template>
@@ -115,7 +115,7 @@ const props = defineProps({
             5 Solar Systems
         </template>
     </StoreItem>
-    <StoreItem>
+    <StoreItem item="galaxy" :display="galaxy_count" :solarsystem_count="solarsystem_count" :blackhole_count="blackhole_count" @buy-galaxy="buyGalaxy">
         <template #sprite>
             <img src="../../assets/sprites/galaxy.png" alt="Galaxy" width=50 height=50 class="sprite">
         </template>
@@ -144,6 +144,21 @@ export default{
         },
         buyStar() {
             this.$emit('buy-star');
+        },
+        buyProtodisk() {
+            this.$emit('buy-protodisk');
+        },
+        buyPlanet() {
+            this.$emit('buy-planet');
+        },
+        buySolarsystem() {
+            this.$emit('buy-solarsystem');
+        },
+        buyBlackhole() {
+            this.$emit('buy-blackhole');
+        },
+        buyGalaxy() {
+            this.$emit('buy-galaxy');
         }
     }
 }

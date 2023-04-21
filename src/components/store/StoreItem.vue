@@ -73,6 +73,31 @@ export default {
             this.$emit('buy-star');
           }
         }
+        if(this.item === "protodisk"){
+          if(this.molecloud_count >= 5){
+            this.$emit('buy-protodisk');
+          }
+        }
+        if(this.item === "planet"){
+          if(this.molecloud_count >= 5 && this.protodisk_count >= 1){
+            this.$emit('buy-planet');
+          }
+        }
+        if(this.item === "solarsystem"){
+          if(this.star_count >= 1 && this.planet_count >= 8){
+            this.$emit('buy-solarsystem');
+          }
+        }
+        if(this.item === "blackhole"){
+          if(this.solarsystem_count >= 5){
+            this.$emit('buy-blackhole');
+          }
+        }
+        if(this.item === "galaxy"){
+          if(this.solarsystem_count >= 10 && this.blackhole_count >= 1){
+            this.$emit('buy-galaxy');
+          }
+        }
       }
     },
   };
