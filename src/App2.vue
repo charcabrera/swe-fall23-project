@@ -35,6 +35,9 @@
                 :blackhole_count="blackhole"
                 :galaxy_count="galaxy"
                 @buy-atom="buyAtom"
+                @buy-molecule="buyMolecule"
+                @buy-molecloud="buyMoleCloud"
+                @buy-star="buyStar"
             />
             <itembox>
                 <button :class="{ 'canbuy': (p>0 && n>0 && e>0), 'cannotbuy': (p<=0 && n<=0 && e<=0) }" @click="
@@ -124,9 +127,9 @@ export default {
     data() {
       return {
         // basic currencies
-        p: 0,
-        n: 0,
-        e: 0,
+        p: 100,
+        n: 100,
+        e: 100,
         // objects
         atom: 0,
         molecule: 0,
@@ -207,7 +210,20 @@ export default {
         },
         buyAtom() {
           this.p--;
-          this.n-=2;
+          this.e -= 2;
+          this.atom++;
+        },
+        buyMolecule() {
+          this.atom -= 2;
+          this.molecule++;
+        },
+        buyMoleCloud() {
+          this.molecule -= 5;
+          this.molecloud++;
+        },
+        buyStar() {
+          this.molecloud -= 10;
+          this.star++;
         }
     },
 	// components: imports components
