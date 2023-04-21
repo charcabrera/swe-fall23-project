@@ -2,9 +2,19 @@
 
 const props = defineProps({
   item: String,
+  display: Number,
   protoncount: Number,
   neutroncount: Number,
   electroncount: Number,
+  atom_count: Number,
+  molecule_count: Number,
+  molecloud_count: Number,
+  star_count: Number,
+  protodisk_count: Number,
+  planet_count: Number,
+  solarsystem_count: Number,
+  blackhole_count: Number,
+  galaxy_count: Number,
 });
 
 </script>
@@ -21,7 +31,7 @@ const props = defineProps({
         <cost class="cost">
             <slot name="cost"></slot>
         </cost>
-        <h1>{{ count }}</h1>
+        <h1>{{ display }}</h1>
         <button :disabled="isDisabled" @click="purchase" class="button-with-image">
             {{ isDisabled ? `${secondsLeft} seconds` : 'Purchase' }}
         </button>
@@ -42,25 +52,25 @@ export default {
       };
     },
     methods: {
-      incrementCount() {
-        if (!this.isDisabled) {
-          this.count++;
-          this.isDisabled = true;
-          this.secondsLeft = 3;
-          this.intervalId = setInterval(() => {
-            this.secondsLeft--;
-            if (this.secondsLeft <= 0) {
-              this.isDisabled = false;
-              clearInterval(this.intervalId);
-            }
-          }, 1000);
-        }
-      },
       purchase(){
         if(this.item === "atom"){
           if(this.protoncount >= 1 && this.electroncount >=2){
-            this.incrementCount();
             this.$emit('buy-atom');
+          }
+        }
+        if(this.item === "molecule"){
+          if(this.atom_count >= 2){
+            this.$emit('buy-molecule');
+          }
+        }
+        if(this.item === "molecloud"){
+          if(this.molecule_count >= 5){
+            this.$emit('buy-molecloud');
+          }
+        }
+        if(this.item === "star"){
+          if(this.molecloud_count >= 10){
+            this.$emit('buy-star');
           }
         }
       }

@@ -27,7 +27,7 @@ const props = defineProps({
 
 <template>
     <div class="container">
-    <StoreItem item="atom" :protoncount="protoncount" :neutroncount="neutroncount" :electroncount="electroncount" @buy-atom="buyAtom">
+    <StoreItem item="atom" :display="atom_count" :protoncount="protoncount" :neutroncount="neutroncount" :electroncount="electroncount" @buy-atom="buyAtom">
         <template #sprite>
             <img src="../../assets/sprites/atom.png" alt="Atom" width=50 height=50 class="sprite">
         </template>
@@ -38,7 +38,7 @@ const props = defineProps({
             1 Proton, 2 Electrons
         </template>
     </StoreItem>
-    <StoreItem>
+    <StoreItem item="molecule" :display="molecule_count" :atom_count="atom_count" @buy-molecule="buyMolecule">
         <template #sprite>
             <img src="../../assets/sprites/molecule.png" alt="Molecule" width=50 height=50 class="sprite">
         </template>
@@ -49,7 +49,7 @@ const props = defineProps({
             2 Atoms
         </template>
     </StoreItem>
-    <StoreItem>
+    <StoreItem item="molecloud" :display="molecloud_count" :molecule_count="molecule_count" @buy-molecloud="buyMoleCloud">
         <template #sprite>
             <img src="../../assets/sprites/molecloud.png" alt="Molecular Cloud" width=50 height=50 class="sprite">
         </template>
@@ -60,7 +60,7 @@ const props = defineProps({
             5 Molecules
         </template>
     </StoreItem>
-    <StoreItem>
+    <StoreItem item="star" :display="star_count" :molecloud_count="molecloud_count" @buy-star="buyStar">
         <template #sprite>
             <img src="../../assets/sprites/star.png" alt="Star" width=50 height=50 class="sprite">
         </template>
@@ -135,6 +135,15 @@ export default{
     methods: {
         buyAtom(){
             this.$emit('buy-atom');
+        },
+        buyMolecule(){
+            this.$emit('buy-molecule');
+        },
+        buyMoleCloud(){
+            this.$emit('buy-molecloud');
+        },
+        buyStar() {
+            this.$emit('buy-star');
         }
     }
 }
