@@ -34,6 +34,7 @@
                 :solarsystem_count="solarsystem"
                 :blackhole_count="blackhole"
                 :galaxy_count="galaxy"
+                @buy-atom="buyAtom"
             />
             <itembox>
                 <button :class="{ 'canbuy': (p>0 && n>0 && e>0), 'cannotbuy': (p<=0 && n<=0 && e<=0) }" @click="
@@ -203,6 +204,10 @@ export default {
             this.e = 0;
             // reset all objects
             this.atom = 0;
+        },
+        buyAtom() {
+          this.p--;
+          this.n-=2;
         }
     },
 	// components: imports components
