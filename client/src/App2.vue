@@ -155,6 +155,46 @@ export default {
             this.game.e = 0;
             // reset all objects
             this.game.atom = 0;
+        },
+        buyAtom() {
+          this.game.p--;
+          this.game.e -= 2;
+          this.game.atom++;
+        },
+        buyMolecule() {
+          this.game.atom -= 2;
+          this.game.molecule++;
+        },
+        buyMoleCloud() {
+          this.game.molecule -= 5;
+          this.game.molecloud++;
+        },
+        buyStar() {
+          this.game.molecloud -= 10;
+          this.game.star++;
+        },
+        buyProtodisk() {
+          this.game.molecloud -= 5;
+          this.game.protodisk++;
+        },
+        buyPlanet() {
+          this.game.molecloud -= 5;
+          this.game.protodisk--;
+          this.game.planet++;
+        },
+        buySolarsystem() {
+          this.game.star--;
+          this.game.planet -= 8;
+          this.game.solarsystem++;
+        },
+        buyBlackhole() {
+          this.game.solarsystem -= 5;
+          this.game.blackhole++;
+        },
+        buyGalaxy() {
+          this.game.solarsystem -= 10;
+          this.game.blackhole--;
+          this.game.galaxy++;
         }
     },
 	// components: imports components
