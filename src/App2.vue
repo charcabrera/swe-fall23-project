@@ -1,6 +1,7 @@
 
 <template>
     <div class="container">
+        <router-link to='/login'>Go to login</router-link>
         <!-- COUNTERS -->
         <div class="boxred red">
             <CounterBox :protoncount="p" :neutroncount="n" :electroncount="e"/>
