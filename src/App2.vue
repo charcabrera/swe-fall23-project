@@ -3,7 +3,7 @@
     <div class="container">
         <!-- COUNTERS -->
         <div class="boxred red">
-            <CounterBox :protoncount="p" :neutroncount="n" :electroncount="e"/>
+            <CounterBox :protoncount="game.p" :neutroncount="game.n" :electroncount="game.e"/>
         </div>
         <!-- NEGATIVE SPACE -->
         <div class="boxblue blue" margin="auto">
@@ -22,18 +22,6 @@
         <!-- STORE -->
         <div class="box2 purple">
             <StoreBox 
-                :protoncount="p" 
-                :neutroncount="n" 
-                :electroncount="e"
-                :atom_count="atom"
-                :molecule_count="molecule"
-                :molecloud_count="molecloud"
-                :star_count="star"
-                :protodisk_count="protodisk"
-                :planet_count="planet"
-                :solarsystem_count="solarsystem"
-                :blackhole_count="blackhole"
-                :galaxy_count="galaxy"
                 @buy-atom="buyAtom"
                 @buy-molecule="buyMolecule"
                 @buy-molecloud="buyMoleCloud"
@@ -43,6 +31,18 @@
                 @buy-solarsystem="buySolarsystem"
                 @buy-blackhole="buyBlackhole"
                 @buy-galaxy="buyGalaxy"
+                :protoncount="game.p"
+                :neutroncount="game.n"
+                :electroncount="game.e"
+                :atom_count="game.atom"
+                :molecule_count="game.molecule"
+                :molecloud_count="game.molecloud"
+                :star_count="game.star"
+                :protodisk_count="game.protodisk"
+                :planet_count="game.planet"
+                :solarsystem_count="game.solarsystem"
+                :blackhole_count="game.blackhole"
+                :galaxy_count="game.galaxy"
             />
         </div>
     </div>
@@ -55,6 +55,7 @@ import NewCTR from './NewCTR.vue'
 import CounterBox from './components/CounterBox.vue';
 import MenuBox from './components/MenuBox.vue';
 import StoreBox from './components/store/StoreBox.vue';
+import { saveStorage, loadStorage } from './services/Save';
 
 const myInput = document.querySelector('#myInput');
 const myDiv2 = document.querySelector('#myDiv') as HTMLDivElement;
@@ -70,6 +71,7 @@ myInput.addEventListener('input', () => {
 export default {
     data() {
       return {
+          game: {
         // basic currencies
         p: 0,
         n: 0,
@@ -85,7 +87,6 @@ export default {
         blackhole: 0,
         galaxy: 0,
         // idk lol
-        count: 0,
         price: 0,
         i: 0,
         phase: 1,
@@ -93,10 +94,13 @@ export default {
         currencies: [],
         prices: [],
         picker: 0,
-        rate: 1000,
         modifier: 0,
         player_modifier: 1,
-        intervalId: null
+              },
+        rate: 1000,
+        intervalId: null,
+        saveInterval: null,
+        count: 0
       }
     },
     // METHODS
@@ -104,19 +108,19 @@ export default {
         // WHEN BUTTON IS PRESSED
         addRandomCurrButton() {
         // Returns a random integer from 0 to 2:
-        this.picker = Math.floor(Math.random() * 3);
+        this.game.picker = Math.floor(Math.random() * 3);
         // Increase by how much?
-        if(this.picker == 0) { this.p += this.player_modifier; }
-        if(this.picker == 1) { this.n += this.player_modifier; }
-        if(this.picker == 2) { this.e += this.player_modifier; }        
+        if(this.game.picker == 0) { this.game.p += this.game.player_modifier; }
+        if(this.game.picker == 1) { this.game.n += this.game.player_modifier; }
+        if(this.game.picker == 2) { this.game.e += this.game.player_modifier; }
         },
         addRandomCurr() {
         // Returns a random integer from 0 to 2:
-        this.picker = Math.floor(Math.random() * 3);
+        this.game.picker = Math.floor(Math.random() * 3);
         // Increase by how much?
-        if(this.picker == 0) { this.p += this.modifier; }
-        if(this.picker == 1) { this.n += this.modifier; }
-        if(this.picker == 2) { this.e += this.modifier; }
+        if(this.game.picker == 0) { this.game.p += this.game.modifier; }
+        if(this.game.picker == 1) { this.game.n += this.game.modifier; }
+        if(this.game.picker == 2) { this.game.e += this.game.modifier; }
         },
         // FIXME
         // input: array containing data values, array containing target values
@@ -134,7 +138,7 @@ export default {
                 currency[i] -= price[i];
             }
             product = product + 1;
-            this.modifier += mod;
+            this.game.modifier += mod;
         },
         increaseSpeed() {
             clearInterval(this.intervalId)
@@ -146,51 +150,51 @@ export default {
         // reset all data values to 0
         bigBounce() {
             // reset basic currencies
-            this.p = 0;
-            this.n = 0;
-            this.e = 0;
+            this.game.p = 0;
+            this.game.n = 0;
+            this.game.e = 0;
             // reset all objects
-            this.atom = 0;
+            this.game.atom = 0;
         },
         buyAtom() {
-          this.p--;
-          this.e -= 2;
-          this.atom++;
+          this.game.p--;
+          this.game.e -= 2;
+          this.game.atom++;
         },
         buyMolecule() {
-          this.atom -= 2;
-          this.molecule++;
+          this.game.atom -= 2;
+          this.game.molecule++;
         },
         buyMoleCloud() {
-          this.molecule -= 5;
-          this.molecloud++;
+          this.game.molecule -= 5;
+          this.game.molecloud++;
         },
         buyStar() {
-          this.molecloud -= 10;
-          this.star++;
+          this.game.molecloud -= 10;
+          this.game.star++;
         },
         buyProtodisk() {
-          this.molecloud -= 5;
-          this.protodisk++;
+          this.game.molecloud -= 5;
+          this.game.protodisk++;
         },
         buyPlanet() {
-          this.molecloud -= 5;
-          this.protodisk--;
-          this.planet++;
+          this.game.molecloud -= 5;
+          this.game.protodisk--;
+          this.game.planet++;
         },
         buySolarsystem() {
-          this.star--;
-          this.planet -= 8;
-          this.solarsystem++;
+          this.game.star--;
+          this.game.planet -= 8;
+          this.game.solarsystem++;
         },
         buyBlackhole() {
-          this.solarsystem -= 5;
-          this.blackhole++;
+          this.game.solarsystem -= 5;
+          this.game.blackhole++;
         },
         buyGalaxy() {
-          this.solarsystem -= 10;
-          this.blackhole--;
-          this.galaxy++;
+          this.game.solarsystem -= 10;
+          this.game.blackhole--;
+          this.game.galaxy++;
         }
     },
 	// components: imports components
@@ -202,7 +206,15 @@ export default {
 },
     // created == starts running as soon as component is created
     created() {
-        this.intervalId = setInterval(() => { 
+        let storage = loadStorage('game')
+        if(storage) {
+            this.game = JSON.parse(storage)
+        }
+        this.saveInterval = setInterval(() => {
+            saveStorage('game', this.game)
+        }, 5000 )
+            saveStorage('game', this.game)
+        this.intervalId = setInterval(() => {
             this.count++;
             this.modifier = this.atom + this.molecule * 2 + this.molecloud * 3 + this.protodisk * 4 + this.planet * 5 + this.solarsystem * 6 + this.blackhole * 7 + this.galaxy * 8
             this.addRandomCurr()

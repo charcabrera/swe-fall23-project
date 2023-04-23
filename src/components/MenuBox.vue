@@ -5,7 +5,9 @@
 
 <template>
     <div class="container">
-        <button>"John Doe"</button>        
+      <router-link to='/login'>
+        <button>"John Doe"</button>
+      </router-link>
         <br>
         <button>Achievements</button>
         <br>
