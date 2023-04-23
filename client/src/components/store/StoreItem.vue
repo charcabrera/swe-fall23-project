@@ -1,3 +1,24 @@
+<script setup lang="ts">
+
+const props = defineProps({
+  item: String,
+  display: Number,
+  protoncount: Number,
+  neutroncount: Number,
+  electroncount: Number,
+  atom_count: Number,
+  molecule_count: Number,
+  molecloud_count: Number,
+  star_count: Number,
+  protodisk_count: Number,
+  planet_count: Number,
+  solarsystem_count: Number,
+  blackhole_count: Number,
+  galaxy_count: Number,
+});
+
+</script>
+
 <template>
     <div class="counter-box">
         <image>
@@ -10,17 +31,18 @@
         <cost class="cost">
             <slot name="cost"></slot>
         </cost>
-        <h1>{{ count }}</h1>
-        <button :disabled="isDisabled" @click="incrementCount" class="button-with-image">
-            {{ isDisabled ? `${secondsLeft} seconds` : 'Purchase' }}
+        <h1>{{ display }}</h1>
+        <button @click="purchase" class="button-with-image">
+            Purchase
         </button>
     </div>
 </template>
-  
+
 <script lang="ts">
-// const props = defineProps({}) // why does the page go blank?
+
+
 export default {
-    data() {        
+    data() {
       return {
         count: 0,
         isDisabled: false,
@@ -30,26 +52,59 @@ export default {
       };
     },
     methods: {
-      incrementCount() {
-        if (!this.isDisabled) {
-          this.count++;
-          this.isDisabled = true;
-          this.secondsLeft = 3;
-          this.intervalId = setInterval(() => {
-            this.secondsLeft--;
-            if (this.secondsLeft <= 0) {
-              this.isDisabled = false;
-              clearInterval(this.intervalId);
-            }
-          }, 1000);
+      purchase(){
+        if(this.item === "atom"){
+          if(this.protoncount >= 1 && this.electroncount >=2){
+            this.$emit('buy-atom');
+          }
         }
-      },
+        if(this.item === "molecule"){
+          if(this.atom_count >= 2){
+            this.$emit('buy-molecule');
+          }
+        }
+        if(this.item === "molecloud"){
+          if(this.molecule_count >= 5){
+            this.$emit('buy-molecloud');
+          }
+        }
+        if(this.item === "star"){
+          if(this.molecloud_count >= 10){
+            this.$emit('buy-star');
+          }
+        }
+        if(this.item === "protodisk"){
+          if(this.molecloud_count >= 5){
+            this.$emit('buy-protodisk');
+          }
+        }
+        if(this.item === "planet"){
+          if(this.molecloud_count >= 5 && this.protodisk_count >= 1){
+            this.$emit('buy-planet');
+          }
+        }
+        if(this.item === "solarsystem"){
+          if(this.star_count >= 1 && this.planet_count >= 8){
+            this.$emit('buy-solarsystem');
+          }
+        }
+        if(this.item === "blackhole"){
+          if(this.solarsystem_count >= 5){
+            this.$emit('buy-blackhole');
+          }
+        }
+        if(this.item === "galaxy"){
+          if(this.solarsystem_count >= 10 && this.blackhole_count >= 1){
+            this.$emit('buy-galaxy');
+          }
+        }
+      }
     },
   };
 
 </script>
-  
-  
+
+
 <style scoped>
 
 h1 {
@@ -96,7 +151,7 @@ button {
     border: none;
     border-radius: 5px;
     justify-content: center;
-} 
+}
 
 .counter-box {
   display:table;
@@ -117,4 +172,3 @@ button {
 }
 
 </style>
-  

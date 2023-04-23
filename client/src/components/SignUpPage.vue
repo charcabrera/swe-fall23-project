@@ -1,6 +1,23 @@
 <!-- This is a new file for our actual project lmao -->
-<script setup lang="ts">
+<script>
+import Auth from '@/services/Auth'
 
+export default {
+  data() {
+    return {
+      user: '',
+      pass: ''
+}
+},
+methods: {
+async register() {
+await Auth.register({
+user: this.user,
+pass: this.pass
+})
+}
+}
+}
 </script>
 
 <template>
@@ -9,14 +26,14 @@
     SIGN UP!
   </h1>
 
-  <form>
+  <form v-on:submit.prevent="register">
     <label for="usrname"></label>
-    <input type="text" id="usrname" name="usrname" placeholder="Username" required>
+    <input type="text" id="usrname" name="usrname" v-model="user" pattern="[a-z0-9A-Z]+" title="only use alphanumeric characters" placeholder="Username" required>
     <br>
     <label for="psw"></label>
-    <input type="password" id="psw" name="psw" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+    <input type="password" id="psw" name="psw" v-model="pass"  placeholder="Password" required>
     <br>
-    <input type="submit" value="Log In">
+    <input type="submit" value="Sign Up">
    </form>
 
 

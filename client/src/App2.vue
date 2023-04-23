@@ -21,7 +21,16 @@
         </div>
         <!-- STORE -->
         <div class="box2 purple">
-            <StoreBox 
+            <StoreBox
+                @buy-atom="buyAtom"
+                @buy-molecule="buyMolecule"
+                @buy-molecloud="buyMoleCloud"
+                @buy-star="buyStar"
+                @buy-protodisk="buyProtodisk"
+                @buy-planet="buyPlanet"
+                @buy-solarsystem="buySolarsystem"
+                @buy-blackhole="buyBlackhole"
+                @buy-galaxy="buyGalaxy"
                 :protoncount="game.p"
                 :neutroncount="game.n"
                 :electroncount="game.e"
@@ -35,67 +44,6 @@
                 :blackhole_count="game.blackhole"
                 :galaxy_count="game.galaxy"
             />
-            <itembox>
-                <button :class="{ 'canbuy': (game.p>0 && game.n>0 && game.e>0), 'cannotbuy': (game.p<=0 && game.n<=0 && game.e<=0) }" @click="
-                        game.currencies = [game.p,game.n,game.e];
-                        game.prices = [1,1,1];
-                        if(canAfford( game.currencies, game.prices )) {
-                            game.p--;
-                            game.n--;
-                            game.e--;
-                            game.atom++;
-                            game.modifier++;
-                        }
-                        ">Atoms: <br>{{ game.atom }}<br>Cost: 1 proton, 1 neutron, 1 electron
-                </button>
-            </itembox>
-            <itembox>
-                <button :class="{ 'canbuy': (game.atom>=3), 'cannotbuy': (game.atom<3) }" @click="
-                        game.currencies = [game.atom];
-                        game.prices = [3];
-                        if(canAfford( game.currencies,game.prices )) {
-                            game.atom-=game.prices[0];
-                            game.molecule++;
-                            game.modifier+=2;
-                        }
-                        ">Molecules: <br>{{ game.molecule }}<br>Cost: 3 atoms
-                </button>
-            </itembox>
-            <itembox>
-                <button :class="{ 'canbuy': (game.molecule>=5), 'cannotbuy': (game.molecule<5) }" @click="
-                        game.price = 5;
-                        if(game.molecule >= game.price) {
-                            game.molecule-=game.price;
-                            game.molecloud++;
-                            game.modifier+=5;
-                        }
-                        ">Molecular clouds: <br>{{ game.molecloud }}<br>Cost: 5 molecules
-                </button>
-            </itembox>
-            <itembox>
-                <button :class="{ 'canbuy': (game.molecloud >= 10), 'cannotbuy': (game.molecloud < 10) }" @click="
-                        if(game.molecloud >= 10) {
-                            game.molecloud-=10;
-                            game.star++;
-                            game.modifier+=10;
-                        }
-                        ">Stars: <br>{{ game.star }}<br>Cost: 10 molecular clouds
-                </button>
-            </itembox>
-            <itembox>
-                <button :class="{ 'canbuy': (game.molecloud>=5 && game.star>0), 'cannotbuy': (game.molecloud>=5 && game.star>0)==false }" @click="
-                        game.currencies = [game.molecloud, game.star]; // the star is not spent in this.game.purchase; just a credit check
-                        game.prices = [5, 1];
-                        if(canAfford( game.currencies,game.prices )) {
-                            game.molecloud-=game.prices[0];
-                            game.protodisk++;
-                            game.modifier+=15;
-                        }
-                        ">Protoplanetary Disks: <br>{{ game.protodisk }}<br>Cost: 5 molecular clouds, 1 star (star not spent)
-                </button>
-            </itembox>           
-            
-            
         </div>
     </div>
 

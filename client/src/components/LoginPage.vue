@@ -1,6 +1,7 @@
 <!-- This is a new file for our actual project lmao -->
 <script>
 import Auth from '@/services/Auth'
+
 export default {
   data() {
     return {
@@ -9,13 +10,11 @@ export default {
 }
 },
 methods: {
-async register() {
-console.log('registering')
-let response = await Auth.register({
+async login() {
+await Auth.login({
 user: this.user,
 pass: this.pass
 })
-console.log(response)
 }
 }
 }
@@ -27,12 +26,12 @@ console.log(response)
     LOGIN!
   </h1>
 
-  <form v-on:submit.prevent="register">
+  <form v-on:submit.prevent="login">
     <label for="usrname"></label>
-    <input type="text" id="user" name="user" v-model="user" placeholder="Username" required>
+    <input type="text" id="usrname" name="usrname" v-model="user" pattern="[a-z0-9A-Z]+" title="only use alphanumeric characters" placeholder="Username" required>
     <br>
     <label for="psw"></label>
-    <input type="password" id="pass" name="pass" v-model="pass" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+    <input type="password" id="pass" name="pass" v-model="pass" placeholder="Password" required>
     <br>
     <input type="submit" value="Log In">
    </form>
