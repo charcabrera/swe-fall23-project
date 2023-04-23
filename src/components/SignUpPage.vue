@@ -6,10 +6,10 @@
 <template>
   <img alt="Vue logo" class="logo" src="../assets/UNIVERSE_TITLE_TEXT.png" />
   <h1>
-    LOGIN!
+    SIGN UP!
   </h1>
 
-  <form action="/action_page.php">
+  <form>
     <label for="usrname"></label>
     <input type="text" id="usrname" name="usrname" placeholder="Username" required>
     <br>
@@ -21,7 +21,7 @@
 
 
   <h2>
-    First time playing? Sign up <router-link to='signup'>here!</router-link>
+    Already have an account? Log in <router-link to='/login'>here!</router-link>
   </h2>
   <router-link to='/'>Back to the game</router-link>
   <br><br><br><br><br><br><br>
