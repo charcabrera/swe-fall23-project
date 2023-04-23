@@ -3,7 +3,7 @@
     <div class="container">
         <!-- COUNTERS -->
         <div class="boxred red">
-            <CounterBox :protoncount="p" :neutroncount="n" :electroncount="e"/>
+            <CounterBox :protoncount="game.p" :neutroncount="game.n" :electroncount="game.e"/>
         </div>
         <!-- NEGATIVE SPACE -->
         <div class="boxblue blue" margin="auto">
@@ -22,76 +22,76 @@
         <!-- STORE -->
         <div class="box2 purple">
             <StoreBox 
-                :protoncount="p" 
-                :neutroncount="n" 
-                :electroncount="e"
-                :atom_count="atom"
-                :molecule_count="molecule"
-                :molecloud_count="molecloud"
-                :star_count="star"
-                :protodisk_count="protodisk"
-                :planet_count="planet"
-                :solarsystem_count="solarsystem"
-                :blackhole_count="blackhole"
-                :galaxy_count="galaxy"
+                :protoncount="game.p"
+                :neutroncount="game.n"
+                :electroncount="game.e"
+                :atom_count="game.atom"
+                :molecule_count="game.molecule"
+                :molecloud_count="game.molecloud"
+                :star_count="game.star"
+                :protodisk_count="game.protodisk"
+                :planet_count="game.planet"
+                :solarsystem_count="game.solarsystem"
+                :blackhole_count="game.blackhole"
+                :galaxy_count="game.galaxy"
             />
             <itembox>
-                <button :class="{ 'canbuy': (p>0 && n>0 && e>0), 'cannotbuy': (p<=0 && n<=0 && e<=0) }" @click="
-                        currencies = [p,n,e];
-                        prices = [1,1,1];
-                        if(canAfford( currencies, prices )) {
-                            p--;
-                            n--;
-                            e--;
-                            atom++;
-                            modifier++;
+                <button :class="{ 'canbuy': (game.p>0 && game.n>0 && game.e>0), 'cannotbuy': (game.p<=0 && game.n<=0 && game.e<=0) }" @click="
+                        game.currencies = [game.p,game.n,game.e];
+                        game.prices = [1,1,1];
+                        if(canAfford( game.currencies, game.prices )) {
+                            game.p--;
+                            game.n--;
+                            game.e--;
+                            game.atom++;
+                            game.modifier++;
                         }
-                        ">Atoms: <br>{{ atom }}<br>Cost: 1 proton, 1 neutron, 1 electron
+                        ">Atoms: <br>{{ game.atom }}<br>Cost: 1 proton, 1 neutron, 1 electron
                 </button>
             </itembox>
             <itembox>
-                <button :class="{ 'canbuy': (atom>=3), 'cannotbuy': (atom<3) }" @click="
-                        currencies = [atom];
-                        prices = [3];
-                        if(canAfford( currencies,prices )) {
-                            atom-=prices[0];
-                            molecule++;
-                            modifier+=2;
+                <button :class="{ 'canbuy': (game.atom>=3), 'cannotbuy': (game.atom<3) }" @click="
+                        game.currencies = [game.atom];
+                        game.prices = [3];
+                        if(canAfford( game.currencies,game.prices )) {
+                            game.atom-=game.prices[0];
+                            game.molecule++;
+                            game.modifier+=2;
                         }
-                        ">Molecules: <br>{{ molecule }}<br>Cost: 3 atoms
+                        ">Molecules: <br>{{ game.molecule }}<br>Cost: 3 atoms
                 </button>
             </itembox>
             <itembox>
-                <button :class="{ 'canbuy': (molecule>=5), 'cannotbuy': (molecule<5) }" @click="
-                        price = 5;
-                        if(molecule >= price) {
-                            molecule-=price;
-                            molecloud++;
-                            modifier+=5;
+                <button :class="{ 'canbuy': (game.molecule>=5), 'cannotbuy': (game.molecule<5) }" @click="
+                        game.price = 5;
+                        if(game.molecule >= game.price) {
+                            game.molecule-=game.price;
+                            game.molecloud++;
+                            game.modifier+=5;
                         }
-                        ">Molecular clouds: <br>{{ molecloud }}<br>Cost: 5 molecules
+                        ">Molecular clouds: <br>{{ game.molecloud }}<br>Cost: 5 molecules
                 </button>
             </itembox>
             <itembox>
-                <button :class="{ 'canbuy': (molecloud >= 10), 'cannotbuy': (molecloud < 10) }" @click="
-                        if(molecloud >= 10) {
-                            molecloud-=10;
-                            star++;
-                            modifier+=10;
+                <button :class="{ 'canbuy': (game.molecloud >= 10), 'cannotbuy': (game.molecloud < 10) }" @click="
+                        if(game.molecloud >= 10) {
+                            game.molecloud-=10;
+                            game.star++;
+                            game.modifier+=10;
                         }
-                        ">Stars: <br>{{ star }}<br>Cost: 10 molecular clouds
+                        ">Stars: <br>{{ game.star }}<br>Cost: 10 molecular clouds
                 </button>
             </itembox>
             <itembox>
-                <button :class="{ 'canbuy': (molecloud>=5 && star>0), 'cannotbuy': (molecloud>=5 && star>0)==false }" @click="
-                        currencies = [molecloud, star]; // the star is not spent in this purchase; just a credit check
-                        prices = [5, 1];
-                        if(canAfford( currencies,prices )) {
-                            molecloud-=prices[0];
-                            protodisk++;
-                            modifier+=15;
+                <button :class="{ 'canbuy': (game.molecloud>=5 && game.star>0), 'cannotbuy': (game.molecloud>=5 && game.star>0)==false }" @click="
+                        game.currencies = [game.molecloud, game.star]; // the star is not spent in this.game.purchase; just a credit check
+                        game.prices = [5, 1];
+                        if(canAfford( game.currencies,game.prices )) {
+                            game.molecloud-=game.prices[0];
+                            game.protodisk++;
+                            game.modifier+=15;
                         }
-                        ">Protoplanetary Disks: <br>{{ protodisk }}<br>Cost: 5 molecular clouds, 1 star (star not spent)
+                        ">Protoplanetary Disks: <br>{{ game.protodisk }}<br>Cost: 5 molecular clouds, 1 star (star not spent)
                 </button>
             </itembox>           
             
@@ -107,6 +107,7 @@ import NewCTR from './NewCTR.vue'
 import CounterBox from './components/CounterBox.vue';
 import MenuBox from './components/MenuBox.vue';
 import StoreBox from './components/store/StoreBox.vue';
+import { saveStorage, loadStorage } from './services/Save';
 
 const myInput = document.querySelector('#myInput');
 const myDiv2 = document.querySelector('#myDiv') as HTMLDivElement;
@@ -122,6 +123,7 @@ myInput.addEventListener('input', () => {
 export default {
     data() {
       return {
+          game: {
         // basic currencies
         p: 0,
         n: 0,
@@ -137,7 +139,6 @@ export default {
         blackhole: 0,
         galaxy: 0,
         // idk lol
-        count: 0,
         price: 0,
         i: 0,
         phase: 1,
@@ -145,10 +146,13 @@ export default {
         currencies: [],
         prices: [],
         picker: 0,
-        rate: 1000,
         modifier: 0,
         player_modifier: 1,
-        intervalId: null
+              },
+        rate: 1000,
+        intervalId: null,
+        saveInterval: null,
+        count: 0
       }
     },
     // METHODS
@@ -156,19 +160,19 @@ export default {
         // WHEN BUTTON IS PRESSED
         addRandomCurrButton() {
         // Returns a random integer from 0 to 2:
-        this.picker = Math.floor(Math.random() * 3);
+        this.game.picker = Math.floor(Math.random() * 3);
         // Increase by how much?
-        if(this.picker == 0) { this.p += this.player_modifier; }
-        if(this.picker == 1) { this.n += this.player_modifier; }
-        if(this.picker == 2) { this.e += this.player_modifier; }        
+        if(this.game.picker == 0) { this.game.p += this.game.player_modifier; }
+        if(this.game.picker == 1) { this.game.n += this.game.player_modifier; }
+        if(this.game.picker == 2) { this.game.e += this.game.player_modifier; }
         },
         addRandomCurr() {
         // Returns a random integer from 0 to 2:
-        this.picker = Math.floor(Math.random() * 3);
+        this.game.picker = Math.floor(Math.random() * 3);
         // Increase by how much?
-        if(this.picker == 0) { this.p += this.modifier; }
-        if(this.picker == 1) { this.n += this.modifier; }
-        if(this.picker == 2) { this.e += this.modifier; }
+        if(this.game.picker == 0) { this.game.p += this.game.modifier; }
+        if(this.game.picker == 1) { this.game.n += this.game.modifier; }
+        if(this.game.picker == 2) { this.game.e += this.game.modifier; }
         },
         // FIXME
         // input: array containing data values, array containing target values
@@ -186,7 +190,7 @@ export default {
                 currency[i] -= price[i];
             }
             product = product + 1;
-            this.modifier += mod;
+            this.game.modifier += mod;
         },
         increaseSpeed() {
             clearInterval(this.intervalId)
@@ -198,11 +202,11 @@ export default {
         // reset all data values to 0
         bigBounce() {
             // reset basic currencies
-            this.p = 0;
-            this.n = 0;
-            this.e = 0;
+            this.game.p = 0;
+            this.game.n = 0;
+            this.game.e = 0;
             // reset all objects
-            this.atom = 0;
+            this.game.atom = 0;
         }
     },
 	// components: imports components
@@ -214,7 +218,15 @@ export default {
 },
     // created == starts running as soon as component is created
     created() {
-        this.intervalId = setInterval(() => { 
+        let storage = loadStorage('game')
+        if(storage) {
+            this.game = JSON.parse(storage)
+        }
+        this.saveInterval = setInterval(() => {
+            saveStorage('game', this.game)
+        }, 5000 )
+            saveStorage('game', this.game)
+        this.intervalId = setInterval(() => {
             this.count++;
             this.addRandomCurr()
          }, 1000)
