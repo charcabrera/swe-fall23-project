@@ -10,8 +10,8 @@ export default {
 }
 },
 methods: {
-async login() {
-await Auth.login({
+async register() {
+await Auth.register({
 user: this.user,
 pass: this.pass
 })
@@ -23,22 +23,22 @@ pass: this.pass
 <template>
   <img alt="Vue logo" class="logo" src="../assets/UNIVERSE_TITLE_TEXT.png" />
   <h1>
-    LOGIN!
+    SIGN UP!
   </h1>
 
-  <form v-on:submit.prevent="login">
+  <form v-on:submit.prevent="register">
     <label for="usrname"></label>
     <input type="text" id="usrname" name="usrname" v-model="user" pattern="[a-z0-9A-Z]+" title="only use alphanumeric characters" placeholder="Username" required>
     <br>
     <label for="psw"></label>
-    <input type="password" id="pass" name="pass" v-model="pass" placeholder="Password" required>
+    <input type="password" id="psw" name="psw" v-model="pass"  placeholder="Password" required>
     <br>
-    <input type="submit" value="Log In">
+    <input type="submit" value="Sign Up">
    </form>
 
 
   <h2>
-    First time playing? Sign up <router-link to='signup'>here!</router-link>
+    Already have an account? Log in <router-link to='/login'>here!</router-link>
   </h2>
   <router-link to='/'>Back to the game</router-link>
   <br><br><br><br><br><br><br>

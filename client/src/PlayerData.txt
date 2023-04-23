@@ -1,0 +1,5 @@
+This file serves as comments for the json file because Douglas Crockford
+was an idiot that didn't allow comments in json files.
+
+the achievements array corresponds to which achievements the player has collected.
+it never resets. it's also an optional feature that we don't have to worry about right now.

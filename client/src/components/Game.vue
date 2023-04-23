@@ -4,25 +4,31 @@ import CounterBox from '../components/CounterBox.vue'
 import StoreBox from './store/StoreBox.vue'
 import MiddleBox from './MiddleBox.vue'
 import MenuBox from './MenuBox.vue'
+
+// attempt to connect with JSON
+import PlayerData from "../PlayerData.json"
+import { ref, computed } from 'vue'
+const data = ref(PlayerData)
+
 </script>
 
 <template>
   <div class="container">
     <!-- COUNTERS -->
     <div class="boxred red">
-        <CounterBox />
+        
     </div>
     <!-- NEGATIVE SPACE -->
     <div class="boxblue blue">
-        <MiddleBox />
+        
     </div>
     <!-- SETTINGS -->
     <div class="boxgreen green">
-        <MenuBox />
+        
     </div>
     <!-- STORE -->
     <div class="box2 purple">
-        <StoreBox />
+        
     </div>
   </div>
 </template>
@@ -65,9 +71,6 @@ import MenuBox from './MenuBox.vue'
 .red {
   background-color: red;
   overflow-y:auto;
-
-  /* background-image: url("../assets/cars 2.jpg");
-  background-size:contain; */
 }
 
 .blue {

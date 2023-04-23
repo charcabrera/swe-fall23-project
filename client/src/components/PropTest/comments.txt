@@ -1,0 +1,11 @@
+The purpose of the PropTest folder is to test how to communicate between parent and child components.
+"Props" and "Emits."
+
+Objectives:
+1. Successfully communicate between a parent/child and child/parent
+2. Button
+  - When pressing a button in the child
+    - the button counter is increased
+    - the child emits a signal to the parent
+  
+3. 
