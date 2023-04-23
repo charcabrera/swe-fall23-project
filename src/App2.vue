@@ -44,67 +44,6 @@
                 @buy-blackhole="buyBlackhole"
                 @buy-galaxy="buyGalaxy"
             />
-            <itembox>
-                <button :class="{ 'canbuy': (p>0 && n>0 && e>0), 'cannotbuy': (p<=0 && n<=0 && e<=0) }" @click="
-                        currencies = [p,n,e];
-                        prices = [1,1,1];
-                        if(canAfford( currencies, prices )) {
-                            p--;
-                            n--;
-                            e--;
-                            atom++;
-                            modifier++;
-                        }
-                        ">Atoms: <br>{{ atom }}<br>Cost: 1 proton, 1 neutron, 1 electron
-                </button>
-            </itembox>
-            <itembox>
-                <button :class="{ 'canbuy': (atom>=3), 'cannotbuy': (atom<3) }" @click="
-                        currencies = [atom];
-                        prices = [3];
-                        if(canAfford( currencies,prices )) {
-                            atom-=prices[0];
-                            molecule++;
-                            modifier+=2;
-                        }
-                        ">Molecules: <br>{{ molecule }}<br>Cost: 3 atoms
-                </button>
-            </itembox>
-            <itembox>
-                <button :class="{ 'canbuy': (molecule>=5), 'cannotbuy': (molecule<5) }" @click="
-                        price = 5;
-                        if(molecule >= price) {
-                            molecule-=price;
-                            molecloud++;
-                            modifier+=5;
-                        }
-                        ">Molecular clouds: <br>{{ molecloud }}<br>Cost: 5 molecules
-                </button>
-            </itembox>
-            <itembox>
-                <button :class="{ 'canbuy': (molecloud >= 10), 'cannotbuy': (molecloud < 10) }" @click="
-                        if(molecloud >= 10) {
-                            molecloud-=10;
-                            star++;
-                            modifier+=10;
-                        }
-                        ">Stars: <br>{{ star }}<br>Cost: 10 molecular clouds
-                </button>
-            </itembox>
-            <itembox>
-                <button :class="{ 'canbuy': (molecloud>=5 && star>0), 'cannotbuy': (molecloud>=5 && star>0)==false }" @click="
-                        currencies = [molecloud, star]; // the star is not spent in this purchase; just a credit check
-                        prices = [5, 1];
-                        if(canAfford( currencies,prices )) {
-                            molecloud-=prices[0];
-                            protodisk++;
-                            modifier+=15;
-                        }
-                        ">Protoplanetary Disks: <br>{{ protodisk }}<br>Cost: 5 molecular clouds, 1 star (star not spent)
-                </button>
-            </itembox>           
-            
-            
         </div>
     </div>
 
@@ -265,6 +204,7 @@ export default {
     created() {
         this.intervalId = setInterval(() => { 
             this.count++;
+            this.modifier = this.atom + this.molecule * 2 + this.molecloud * 3 + this.protodisk * 4 + this.planet * 5 + this.solarsystem * 6 + this.blackhole * 7 + this.galaxy * 8
             this.addRandomCurr()
          }, 1000)
     },
