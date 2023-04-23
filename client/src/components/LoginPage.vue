@@ -1,6 +1,24 @@
 <!-- This is a new file for our actual project lmao -->
-<script setup lang="ts">
-
+<script>
+import Auth from '@/services/Auth'
+export default {
+  data() {
+    return {
+      user: '',
+      pass: ''
+}
+},
+methods: {
+async register() {
+console.log('registering')
+let response = await Auth.register({
+user: this.user,
+pass: this.pass
+})
+console.log(response)
+}
+}
+}
 </script>
 
 <template>
@@ -9,12 +27,12 @@
     LOGIN!
   </h1>
 
-  <form action="/action_page.php">
+  <form v-on:submit.prevent="register">
     <label for="usrname"></label>
-    <input type="text" id="usrname" name="usrname" placeholder="Username" required>
+    <input type="text" id="user" name="user" v-model="user" placeholder="Username" required>
     <br>
     <label for="psw"></label>
-    <input type="password" id="psw" name="psw" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+    <input type="password" id="pass" name="pass" v-model="pass" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
     <br>
     <input type="submit" value="Log In">
    </form>
