@@ -12,6 +12,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./client
     steps:
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.5.2
@@ -37,6 +40,6 @@ jobs:
           # Used to specify the path to a dependency file: package-lock.json, yarn.lock, etc. Supports wildcards or a list of file names for caching multiple dependencies.
           # cache-dependency-path: # optional
           # Sets the working directory
-          working-directory: ./client
+
       - run: npm ci
       - run: npm test
