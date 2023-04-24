@@ -42,4 +42,6 @@ jobs:
           # Sets the working directory
 
       - run: npm ci
+        working-directory: ./client
       - run: npm test
+        working-directory: ./client
