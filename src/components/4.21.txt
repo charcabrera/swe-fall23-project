@@ -1,0 +1,12 @@
+<button>"John Doe"</button>        
+        <br>
+
+/*
+myInput.addEventListener('input', () => {
+  // Check conditions here
+  // ...
+
+  // Change background image
+  myDiv2.style.backgroundImage = 'url(assets/sprites/universestates/phase1.png)';
+});
+*/

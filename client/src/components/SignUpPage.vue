@@ -23,7 +23,7 @@ pass: this.pass
 <template>
   <img alt="Vue logo" class="logo" src="../assets/UNIVERSE_TITLE_TEXT.png" />
   <h1>
-    SIGN UP!
+    <img alt="Log in" class="log in" src="../assets/SIGN_UP_TEXT.png" />
   </h1>
 
   <form v-on:submit.prevent="register">

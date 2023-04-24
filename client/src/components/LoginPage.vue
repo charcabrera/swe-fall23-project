@@ -21,9 +21,10 @@ pass: this.pass
 </script>
 
 <template>
-  <img alt="Vue logo" class="logo" src="../assets/UNIVERSE_TITLE_TEXT.png" />
+  <ctr>
+    <img alt="Vue logo" class="logo" src="../assets/UNIVERSE_TITLE_TEXT.png" />
   <h1>
-    LOGIN!
+    <img alt="Log in" class="log in" src="../assets/LOG_IN_TEXT.png" />
   </h1>
 
   <form v-on:submit.prevent="login">
@@ -45,6 +46,8 @@ pass: this.pass
   <footer>
     Licensed under GNU. You can literally steal all of this code and we can't stop you. :(
   </footer>
+  </ctr>
+  
 
 </template>
 
@@ -66,7 +69,12 @@ h2 {
   width: 500px;
   margin: auto;
 }
-
+ctr {
+  justify-content: center;
+  text-align: center;
+  width: 350vh;
+  height: 100vh;
+}
 footer {
   font-size: 12px;
   color: #000000;
@@ -88,6 +96,7 @@ label {
 .container {
   background-color: #f1f1f1;
   padding: 20px;
+
 }
 
 input {
@@ -104,4 +113,10 @@ input:focus {
     background-color: lightblue;
 }
 
+template {
+  justify-content: center;
+  text-align: center;
+  width: 1000vh;
+  height: 100vh;
+}
 </style>

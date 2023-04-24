@@ -227,8 +227,8 @@ export default {
 #BIG {
     color: black;
   text-align: center;
-  width: 30vh;
-  height: 30vh;   
+  width: 50vh;
+  height: 50vh;   
   margin: auto;
   background-image: url(assets/sprites/universestates/phase4.png);
   background-size: contain;
@@ -295,21 +295,22 @@ currency {
 }
 
 .red {
-  background-color: red;
+  /* background-color: red; */
   overflow-y:auto;
   text-align: center;
 }
 
 .blue {
-  background-color: blue;
+  /* background-color: blue; */
+  justify-content: center;
 }
 
 .green {
-  background-color: green;
+  /* background-color: green; */
 }
 
 .purple {
-  background-color: purple;
+  /* background-color: purple; */
   justify-content: center;
 }
 

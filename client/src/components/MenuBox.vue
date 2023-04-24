@@ -6,14 +6,19 @@
 <template>
     <div class="container">
       <router-link to='/login'>
-        <button>"John Doe"</button>
+        <button id="loginbutton">"LOGIN/SIGNUP"</button>
       </router-link>
-        <br>
+      <!-- 
+        
+                <br>
         <button>Achievements</button>
         <br>
         <button>Leaderboard</button>
         <br>
         <button>Settings</button>
+
+       -->
+
     </div>
 </template>
 
@@ -27,6 +32,12 @@
 
 button {
   height: 50px;
+}
 
+#loginbutton {
+  background-size: contain;
+  background-image: url(../assets/sprites/p3.png);
+  color: white;
+  height: 100px;
 }
 </style>

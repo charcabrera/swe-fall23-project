@@ -24,7 +24,7 @@ const props = defineProps({
         <image>
             <slot name="sprite"></slot>
         </image>
-        <br>
+
         <name class="name">
             <slot name="n"></slot>
         </name>
@@ -136,32 +136,36 @@ img {
 }
 
 button {
-    background-color: var(--button);
+    /* background-color: var(--button); */
+    background-image: url(../../assets/sprites/green_button.png);
     font-family:'Courier New', Courier, monospace;
     justify-content: center;
     text-align: center;
+    border-radius: 0px;
 }
 
 .button-with-image {
-    background-image: url('daniel stuff\src\assets\sprites\atom.png');
-    background-size: cover;
+    
+    background-size: contain;
     color: white;
     font-size: 18px;
-    padding: 5px 70px;
+    padding: 5px 45px;
     border: none;
-    border-radius: 5px;
+    border-radius: 0px;
     justify-content: center;
 }
 
 .counter-box {
   display:table;
-  flex-direction: column;
   align-items: center;
   padding: 5px;
-  background-color: var(--box-color);
+  /* background-color: var(--box-color); */
+  background-image: url('../../assets/sprites/p3.png');
+  background-size: contain;
   border-radius: 5px;
   height: 50px;
   transform: scale(0.9);
+  line-height:25px;
 }
 
 .canbuy {
