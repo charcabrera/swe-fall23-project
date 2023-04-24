@@ -1,7 +1,10 @@
-import axios from 'axios'
+const axios = require('axios')
 
-export default () => {
+const doThing = () => {
 	return axios.create({
 		baseURL: 'http://localhost:8001'
 	})
+}
+module.exports = {
+	doThing
 }
