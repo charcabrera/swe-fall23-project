@@ -11,6 +11,7 @@
                         addRandomCurrButton()
                         ">
         </button>
+        Click the button
         <br>
         </div>
         <!-- SETTINGS -->

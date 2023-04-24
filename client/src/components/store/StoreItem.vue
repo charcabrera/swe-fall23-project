@@ -137,7 +137,7 @@ img {
 
 button {
     /* background-color: var(--button); */
-    background-image: url(../../assets/sprites/green_button.png);
+    background-color: transparent;
     font-family:'Courier New', Courier, monospace;
     justify-content: center;
     text-align: center;
@@ -158,7 +158,7 @@ button {
 .counter-box {
   display:table;
   align-items: center;
-  padding: 5px;
+  padding: 10px;
   /* background-color: var(--box-color); */
   background-image: url('../../assets/sprites/p3.png');
   background-size: contain;

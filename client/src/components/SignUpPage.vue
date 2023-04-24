@@ -40,10 +40,14 @@ pass: this.pass
   <h2>
     Already have an account? Log in <router-link to='/login'>here!</router-link>
   </h2>
-  <router-link to='/'>Back to the game</router-link>
+  <router-link to='/'>
+    <back>
+      ◄ Return to game
+    </back>
+  </router-link>
   <br><br><br><br><br><br><br>
   <footer>
-    Licensed under GNU. You can literally steal all of this code and we can't stop you. :(
+    Licensed under GNU
   </footer>
 
 </template>
@@ -71,8 +75,13 @@ footer {
   font-size: 12px;
   color: #000000;
   text-align: right;
+  font-size: large;
 }
-
+back {
+  background-color: #000000;
+  padding: 5px;
+  border-radius: 5px;
+}
 form {
   text-align: center;
 }

@@ -22,7 +22,7 @@ pass: this.pass
 
 <template>
   <ctr>
-    <img alt="Vue logo" class="logo" src="../assets/UNIVERSE_TITLE_TEXT.png" />
+    <img alt="Vue logo" class="logo" src="../assets/UNIVERSE_TITLE_TEXT.png"/>
   <h1>
     <img alt="Log in" class="log in" src="../assets/LOG_IN_TEXT.png" />
   </h1>
@@ -41,10 +41,15 @@ pass: this.pass
   <h2>
     First time playing? Sign up <router-link to='signup'>here!</router-link>
   </h2>
-  <router-link to='/'>Back to the game</router-link>
+  <br>
+  <router-link to='/'>
+    <back>
+      ◄ Return to game
+    </back>
+  </router-link>
   <br><br><br><br><br><br><br>
   <footer>
-    Licensed under GNU. You can literally steal all of this code and we can't stop you. :(
+    Licensed under GNU
   </footer>
   </ctr>
   
@@ -69,6 +74,11 @@ h2 {
   width: 500px;
   margin: auto;
 }
+back {
+  background-color: #000000;
+  padding: 5px;
+  border-radius: 5px;
+}
 ctr {
   justify-content: center;
   text-align: center;
@@ -79,6 +89,7 @@ footer {
   font-size: 12px;
   color: #000000;
   text-align: right;
+  font-size: large;
 }
 
 form {
