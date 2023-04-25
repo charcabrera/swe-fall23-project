@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const fs = require('fs')
 const port = 8001
+const path = __dirname + '/public/insecure.txt'
 
 const app = express()
 app.use(bodyParser.json())
@@ -22,9 +23,6 @@ const us_re = /^[a-zA-Z0-9]+$/
 
 // login code
 app.post('/login', (req, res) => {
-console.log('login attempt')
-console.log(req.body.user)
-console.log(req.body.pass)
   if(!req.body.user || !req.body.pass) {
     res.send({
       message: 'You must fill out both the user and pass fields.'
@@ -37,7 +35,7 @@ console.log(req.body.pass)
   if(!us_re.test(req.body.user)) {
     console.log(`User ${req.body.user} attempted login with an invalid username.`)
   }
-  f = fs.readFileSync(__dirname + '/public/secure.txt', 'utf8')
+  f = fs.readFileSync(path, 'utf8')
 
   if(f.includes(req.body.user + ',' + req.body.pass)) {
     res.send({
@@ -72,8 +70,7 @@ app.post('/register', (req, res) => {
     return
   }
 
-  path = __dirname + '/public/secure.txt'
-  f = fs.readFileSync(__dirname + '/public/secure.txt', 'utf8')
+  f = fs.readFileSync(path, 'utf8')
 
   // tests if the user already exists
   if(f.includes(req.body.user + ',')) {
@@ -97,5 +94,5 @@ app.post('/register', (req, res) => {
 })
 
 app.listen(port, () => {
-	console.log(`Example app listening on port ${port}`)
+	console.log('Starting UIM service.')
 })
